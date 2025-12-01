@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwpwgqius8x6h"]
+
+[ext_resource type="Texture2D" uid="uid://boi8dv016ave1" path="res://assets/sprites/Entities/PlayerJet.png" id="1_u71h6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eto2g"]
+atlas = ExtResource("1_u71h6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibse8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eto2g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u71h6"]
+radius = 6.0
+height = 24.0
+
+[node name="Player Jet" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ibse8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_u71h6")
