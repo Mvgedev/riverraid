@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwpwgqius8x6h"]
+[gd_scene load_steps=6 format=3 uid="uid://cwpwgqius8x6h"]
 
+[ext_resource type="Script" uid="uid://gdg0b41qx3w6" path="res://scripts/entities/player_jet.gd" id="1_eto2g"]
 [ext_resource type="Texture2D" uid="uid://boi8dv016ave1" path="res://assets/sprites/Entities/PlayerJet.png" id="1_u71h6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eto2g"]
@@ -22,6 +23,9 @@ radius = 6.0
 height = 24.0
 
 [node name="Player Jet" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 2
+script = ExtResource("1_eto2g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ibse8")

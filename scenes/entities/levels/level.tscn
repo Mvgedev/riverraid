@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt6vds7qkek2b"]
+
+[ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_ut3wp"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ut3wp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Borders" type="Node" parent="."]

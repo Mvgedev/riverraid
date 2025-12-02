@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://lr0lc3p3sc25"]
+
+[ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_aahv5"]
+[ext_resource type="Texture2D" uid="uid://ch8fw1kl31rvp" path="res://assets/sprites/Levels/BG Test3.png" id="2_u8mn4"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_u8mn4"]
+b = Vector2(0, 576)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ra2r7"]
+b = Vector2(270, 0)
+
+[node name="SampleLevel3" type="Node2D"]
+script = ExtResource("1_aahv5")
+metadata/_custom_type_script = "uid://cknvxfrutjwkb"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_u8mn4")
+centered = false
+
+[node name="Borders" type="Node" parent="."]
+
+[node name="BorderLeft" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderLeft"]
+position = Vector2(32, 0)
+shape = SubResource("SegmentShape2D_u8mn4")
+
+[node name="BorderRight" type="StaticBody2D" parent="Borders"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/BorderRight"]
+position = Vector2(255, 16)
+build_mode = 1
+polygon = PackedVector2Array(-16, -16, 15, -16, 15, 560, -16, 560, -16, 452, -17, 448, -18, 441, -20, 433, -22, 426, -27, 419, -42, 401, -81, 362, -86, 359, -91, 355, -100, 345, -106, 338, -113, 330, -117, 325, -127, 304, -127, 275, -126, 268, -125, 252, -127, 235, -127, 204, -126, 196, -127, 174, -126, 168, -123, 157, -114, 140, -110, 134, -105, 128, -97, 119, -75, 98, -59, 86, -42, 76, -30, 68, -17, 57, -16, 52)
+
+[node name="Reset" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
+shape = SubResource("SegmentShape2D_ra2r7")
