@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://5fr14ke0vyda"]
+
+[ext_resource type="Texture2D" uid="uid://dfe2en3xla8db" path="res://assets/sprites/Entities/Helicopter.png" id="1_wekmx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nec5y"]
+radius = 5.0
+height = 14.0
+
+[node name="Helicopter" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wekmx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_nec5y")
