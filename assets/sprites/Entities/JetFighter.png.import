@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhufsntbmbo6e"
-path="res://.godot/imported/Helicopter.png-07b25aa2878632604fdf6b32de18990f.ctex"
+uid="uid://7o62ttpm80tp"
+path="res://.godot/imported/JetFighter.png-b6fd406997fd1ded69e5489c1dec2833.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Entities/Helicopter.png"
-dest_files=["res://.godot/imported/Helicopter.png-07b25aa2878632604fdf6b32de18990f.ctex"]
+source_file="res://assets/sprites/Entities/JetFighter.png"
+dest_files=["res://.godot/imported/JetFighter.png-b6fd406997fd1ded69e5489c1dec2833.ctex"]
 
 [params]
 

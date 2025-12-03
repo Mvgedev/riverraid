@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://fmlpdt63ao1w"]
+
+[ext_resource type="Texture2D" uid="uid://7o62ttpm80tp" path="res://assets/sprites/Entities/JetFighter.png" id="1_xvqkj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvqkj"]
+radius = 4.0
+height = 24.0
+
+[node name="Node2D" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xvqkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_xvqkj")
