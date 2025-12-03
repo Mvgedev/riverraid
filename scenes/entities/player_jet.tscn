@@ -42,5 +42,6 @@ shape = SubResource("CapsuleShape2D_ibse8")
 [node name="Bullets" type="Node" parent="."]
 
 [node name="Cannon Cooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="Cannon Cooldown" to="." method="_on_cannon_cooldown_timeout"]

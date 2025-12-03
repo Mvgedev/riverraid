@@ -17,3 +17,10 @@ texture = ExtResource("1_ma0cl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_byxw7")
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

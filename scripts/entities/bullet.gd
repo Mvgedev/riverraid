@@ -5,3 +5,8 @@ extends CharacterBody2D
 func _physics_process(_delta: float) -> void:
 	velocity = Vector2(0, -SPEED)
 	move_and_slide()
+
+
+func _on_lifetime_timeout() -> void:
+	print("Bullet expired")
+	queue_free()
