@@ -8,3 +8,9 @@ script = ExtResource("1_ut3wp")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="Borders" type="Node" parent="."]
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="FuelSpawns" type="Node" parent="."]
+
+[node name="SupplySpawns" type="Node" parent="."]

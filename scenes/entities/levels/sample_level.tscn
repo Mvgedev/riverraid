@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cromugeuliao0"]
+[gd_scene load_steps=8 format=3 uid="uid://cromugeuliao0"]
 
 [ext_resource type="Texture2D" uid="uid://dasmlnk242tds" path="res://assets/sprites/Levels/BG Test.png" id="1_8fgm0"]
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_v25xl"]
+[ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="3_cp38u"]
+[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_m8kjt"]
+[ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="4_m8kjt"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8fgm0"]
 a = Vector2(32, -1)
@@ -20,16 +23,15 @@ centered = false
 
 [node name="Borders" type="Node" parent="."]
 
-[node name="Killzone" type="StaticBody2D" parent="Borders"]
-collision_mask = 3
+[node name="Obstacles" parent="Borders" instance=ExtResource("3_m8kjt")]
 
-[node name="BorderLeft" type="CollisionShape2D" parent="Borders/Killzone"]
+[node name="BorderLeft" type="CollisionShape2D" parent="Borders/Obstacles"]
 shape = SubResource("SegmentShape2D_8fgm0")
 
-[node name="Killzone2" type="StaticBody2D" parent="Borders"]
-position = Vector2(209, 0)
+[node name="Obstacles2" parent="Borders" instance=ExtResource("3_m8kjt")]
 
-[node name="BorderRight" type="CollisionShape2D" parent="Borders/Killzone2"]
+[node name="BorderRight" type="CollisionShape2D" parent="Borders/Obstacles2"]
+position = Vector2(209, 0)
 shape = SubResource("SegmentShape2D_8fgm0")
 
 [node name="Reset" type="Area2D" parent="."]
@@ -38,3 +40,18 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
 shape = SubResource("SegmentShape2D_v25xl")
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="Boat" parent="EnemySpawns" instance=ExtResource("3_cp38u")]
+position = Vector2(56, 114)
+
+[node name="Helicopter" parent="EnemySpawns" instance=ExtResource("4_m8kjt")]
+position = Vector2(223, 238)
+
+[node name="Boat2" parent="EnemySpawns" instance=ExtResource("3_cp38u")]
+position = Vector2(134, 354)
+
+[node name="FuelSpawns" type="Node" parent="."]
+
+[node name="SupplySpawns" type="Node" parent="."]

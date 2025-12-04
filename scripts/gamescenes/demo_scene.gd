@@ -29,8 +29,7 @@ func _process(delta: float) -> void:
 
 func generate_next_chunk():
 	var random = randi_range(0, 2)
-	print(random)
-	var chunk
+	var chunk: Level
 	if random == 0:
 		chunk = SAMPLE_1.instantiate()
 	elif random == 1:
@@ -41,8 +40,22 @@ func generate_next_chunk():
 		var posy = levels.get_child(levels.get_child_count() - 1).position.y - 576
 		chunk.position.y = posy
 	levels.add_child(chunk)
+	populate_next_chunk(chunk)
 	
 
+func populate_next_chunk(chunk: Level):
+	var max_count = 2
+	var current = 0
+	while current < max_count:
+		if chunk.enemy_spawns.get_child_count() < 1:
+			current = max_count 
+		else:
+			var enemies_copy = chunk.enemy_spawns.get_children().duplicate()
+			for enemy in enemies_copy:
+				var rand = randi_range(0,1) as bool
+				enemy.enable(rand)
+				current += rand as int
+	
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print("Level scrolled")

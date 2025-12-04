@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Bullet
 
 @export var SPEED = 400
 
@@ -8,5 +9,4 @@ func _physics_process(_delta: float) -> void:
 
 
 func _on_lifetime_timeout() -> void:
-	print("Bullet expired")
 	queue_free()

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 @onready var left_cannon: Area2D = $"Left Cannon"
 @onready var right_cannon: Area2D = $"Right Cannon"
@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var cannon_cooldown: Timer = $"Cannon Cooldown"
 
 var cooldown = false
-var cd_time = 1.0
+var cd_time = 0.5
 
 const LATERAL_SPEED = 300.0
 
@@ -19,7 +19,12 @@ var acceleration = 90
 var min_accel = 60
 var max_accel = 200
 
-func _physics_process(_delta: float) -> void:
+var lat_accel = 1600.0
+var lat_brake = 1500.0
+
+var cur_direction = 0
+
+func _physics_process(delta: float) -> void:
 	
 	# Shoot
 	if Input.is_action_just_pressed("Shoot") and cooldown == false:
@@ -32,9 +37,13 @@ func _physics_process(_delta: float) -> void:
 		acceleration = max(acceleration - accel_modifier, min_accel)
 	var direction := Input.get_axis("Move Left", "Move Right")
 	if direction:
-		velocity.x = direction * LATERAL_SPEED
+		if cur_direction != direction:
+			velocity.x *= 0.2
+		cur_direction = direction
+		var target_speed = direction * LATERAL_SPEED
+		velocity.x = move_toward(velocity.x, target_speed, lat_accel * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, LATERAL_SPEED)
+		velocity.x = move_toward(velocity.x, 0, lat_brake * delta)
 	move_and_slide()
 
 func shoot():

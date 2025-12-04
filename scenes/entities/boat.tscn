@@ -1,17 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://4fxy4g72ku4f"]
+[gd_scene load_steps=5 format=3 uid="uid://4fxy4g72ku4f"]
 
-[ext_resource type="Texture2D" uid="uid://b87e6daxripl8" path="res://assets/sprites/Entities/Boat.png" id="1_lbl5p"]
+[ext_resource type="Script" uid="uid://buhrjtbwj2j0k" path="res://scripts/entities/boat.gd" id="1_3kak1"]
+[ext_resource type="Texture2D" uid="uid://bm23appy72460" path="res://assets/sprites/Entities/Boat.png" id="1_lbl5p"]
+[ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/killzone.tscn" id="3_gr51h"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3kak1"]
 radius = 7.0
 height = 29.999998
 
-[node name="Boat" type="CharacterBody2D"]
+[node name="Boat" type="Node2D"]
+script = ExtResource("1_3kak1")
+metadata/_custom_type_script = "uid://b0j2k7hyrnky7"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lbl5p")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Killzone" parent="." instance=ExtResource("3_gr51h")]
+collision_layer = 4
+collision_mask = 131
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 2)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_3kak1")
+
+[node name="RCLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-24, 0)
+collide_with_areas = true
+
+[node name="RCRight" type="RayCast2D" parent="."]
+target_position = Vector2(23, 0)
+collide_with_areas = true

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://4wgx8npskkrf"]
+
+[ext_resource type="Script" uid="uid://cwf1m6t533sxf" path="res://scripts/levels/obstacles.gd" id="1_ivb3u"]
+
+[node name="Obstacles" type="Area2D"]
+collision_mask = 135
+script = ExtResource("1_ivb3u")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

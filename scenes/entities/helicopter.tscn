@@ -1,17 +1,33 @@
-[gd_scene load_steps=3 format=3 uid="uid://5fr14ke0vyda"]
+[gd_scene load_steps=5 format=3 uid="uid://5fr14ke0vyda"]
 
-[ext_resource type="Texture2D" uid="uid://dfe2en3xla8db" path="res://assets/sprites/Entities/Helicopter.png" id="1_wekmx"]
+[ext_resource type="Script" uid="uid://bh20jqpfovdo4" path="res://scripts/entities/helicopter.gd" id="1_nec5y"]
+[ext_resource type="Texture2D" uid="uid://bhufsntbmbo6e" path="res://assets/sprites/Entities/Helicopter.png" id="1_wekmx"]
+[ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/killzone.tscn" id="3_gqhe6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nec5y"]
 radius = 5.0
 height = 14.0
 
-[node name="Helicopter" type="CharacterBody2D"]
+[node name="Helicopter" type="Node2D"]
+script = ExtResource("1_nec5y")
+metadata/_custom_type_script = "uid://b0j2k7hyrnky7"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wekmx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Killzone" parent="." instance=ExtResource("3_gqhe6")]
+collision_layer = 4
+collision_mask = 131
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(-3, 2)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_nec5y")
+
+[node name="RCLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-17, 0)
+collide_with_areas = true
+
+[node name="RCRight" type="RayCast2D" parent="."]
+target_position = Vector2(15, 0)
+collide_with_areas = true

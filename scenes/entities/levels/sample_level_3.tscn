@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://lr0lc3p3sc25"]
+[gd_scene load_steps=8 format=3 uid="uid://lr0lc3p3sc25"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_aahv5"]
 [ext_resource type="Texture2D" uid="uid://ch8fw1kl31rvp" path="res://assets/sprites/Levels/BG Test3.png" id="2_u8mn4"]
+[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_8fsr0"]
+[ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="3_r4xjk"]
+[ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="4_8fsr0"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_u8mn4"]
 b = Vector2(0, 576)
@@ -19,15 +22,15 @@ centered = false
 
 [node name="Borders" type="Node" parent="."]
 
-[node name="BorderLeft" type="StaticBody2D" parent="Borders"]
+[node name="Obstacles" parent="Borders" instance=ExtResource("3_8fsr0")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BorderLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Obstacles"]
 position = Vector2(32, 0)
 shape = SubResource("SegmentShape2D_u8mn4")
 
-[node name="BorderRight" type="StaticBody2D" parent="Borders"]
+[node name="Obstacles2" parent="Borders" instance=ExtResource("3_8fsr0")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/BorderRight"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Obstacles2"]
 position = Vector2(255, 16)
 build_mode = 1
 polygon = PackedVector2Array(-16, -16, 15, -16, 15, 560, -16, 560, -16, 452, -17, 448, -18, 441, -20, 433, -22, 426, -27, 419, -42, 401, -81, 362, -86, 359, -91, 355, -100, 345, -106, 338, -113, 330, -117, 325, -127, 304, -127, 275, -126, 268, -125, 252, -127, 235, -127, 204, -126, 196, -127, 174, -126, 168, -123, 157, -114, 140, -110, 134, -105, 128, -97, 119, -75, 98, -59, 86, -42, 76, -30, 68, -17, 57, -16, 52)
@@ -38,3 +41,18 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
 shape = SubResource("SegmentShape2D_ra2r7")
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="Boat" parent="EnemySpawns" instance=ExtResource("3_r4xjk")]
+position = Vector2(60, 258)
+
+[node name="Helicopter" parent="EnemySpawns" instance=ExtResource("4_8fsr0")]
+position = Vector2(63, 45)
+
+[node name="Helicopter2" parent="EnemySpawns" instance=ExtResource("4_8fsr0")]
+position = Vector2(211, 468)
+
+[node name="FuelSpawns" type="Node" parent="."]
+
+[node name="SupplySpawns" type="Node" parent="."]

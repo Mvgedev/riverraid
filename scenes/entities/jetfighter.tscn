@@ -1,17 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://fmlpdt63ao1w"]
+[gd_scene load_steps=5 format=3 uid="uid://fmlpdt63ao1w"]
 
+[ext_resource type="Script" uid="uid://b0j2k7hyrnky7" path="res://scripts/entities/enemy.gd" id="1_rr7pt"]
 [ext_resource type="Texture2D" uid="uid://7o62ttpm80tp" path="res://assets/sprites/Entities/JetFighter.png" id="1_xvqkj"]
+[ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/killzone.tscn" id="3_2q57n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvqkj"]
 radius = 4.0
 height = 24.0
 
-[node name="Node2D" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_rr7pt")
+metadata/_custom_type_script = "uid://b0j2k7hyrnky7"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_xvqkj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Killzone" parent="." instance=ExtResource("3_2q57n")]
+collision_layer = 4
+collision_mask = 131
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 1)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_xvqkj")
