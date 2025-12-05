@@ -49,10 +49,10 @@ func _physics_process(delta: float) -> void:
 func shoot():
 	var left_missile = bullet.instantiate()
 	var right_missile = bullet.instantiate()
-	bullets.add_child(left_missile)
-	bullets.add_child(right_missile)
 	left_missile.global_position = left_cannon.global_position
 	right_missile.global_position = right_cannon.global_position
+	bullets.add_child(left_missile)
+	bullets.add_child(right_missile)
 	cannon_cooldown.start(cd_time)
 	pass
 

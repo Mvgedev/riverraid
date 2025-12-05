@@ -61,3 +61,9 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	print("Level scrolled")
 	area.get_parent().queue_free()
 	call_deferred("generate_next_chunk")
+
+
+func _on_bullet_limit_body_entered(body: Node2D) -> void:
+	if body is Bullet:
+		body.queue_free()
+		print("Bullet reached end")

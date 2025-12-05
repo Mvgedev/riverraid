@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4fxmbwhxhtro"]
+[gd_scene load_steps=6 format=3 uid="uid://c4fxmbwhxhtro"]
 
 [ext_resource type="Script" uid="uid://d3w2j7657ko64" path="res://scripts/gamescenes/demo_scene.gd" id="1_d7yel"]
 [ext_resource type="PackedScene" uid="uid://nnlswhqy5y5g" path="res://scenes/gui/bottom_ui.tscn" id="1_nxoo5"]
 [ext_resource type="PackedScene" uid="uid://cwpwgqius8x6h" path="res://scenes/entities/player_jet.tscn" id="2_q0ckh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mauty"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_mauty"]
+b = Vector2(273, 0)
 
 [node name="Demo Scene" type="Node2D"]
 script = ExtResource("1_d7yel")
@@ -19,13 +22,21 @@ position = Vector2(138, 335)
 
 [node name="Level Limit" type="Node" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Level Limit"]
+[node name="LevelRecycler" type="Area2D" parent="Level Limit"]
 position = Vector2(0, 490)
 collision_layer = 16
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/LevelRecycler"]
 shape = SubResource("WorldBoundaryShape2D_mauty")
+
+[node name="BulletLimit" type="Area2D" parent="Level Limit"]
+position = Vector2(-1, -2)
+collision_layer = 32
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/BulletLimit"]
+shape = SubResource("SegmentShape2D_mauty")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -36,4 +47,5 @@ anchor_top = 1.0
 anchor_right = 0.5
 grow_vertical = 0
 
-[connection signal="area_entered" from="Level Limit/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Level Limit/LevelRecycler" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Level Limit/BulletLimit" to="." method="_on_bullet_limit_body_entered"]
