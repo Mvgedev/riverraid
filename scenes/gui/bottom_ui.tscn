@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://nnlswhqy5y5g"]
+[gd_scene load_steps=3 format=3 uid="uid://nnlswhqy5y5g"]
 
+[ext_resource type="Script" uid="uid://ceobwuskrowcp" path="res://scenes/gui/bottom_ui.gd" id="1_2oaib"]
 [ext_resource type="Texture2D" uid="uid://10g7kuy1kfct" path="res://assets/sprites/UI/UI_BottomBar.png" id="1_7ld1u"]
 
 [node name="Bottom UI" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2oaib")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -23,3 +25,17 @@ offset_right = 135.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_7ld1u")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -80.0
+offset_right = 60.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 0

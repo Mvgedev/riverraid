@@ -12,17 +12,25 @@ class_name Player
 var cooldown = false
 var cd_time = 0.5
 
-const LATERAL_SPEED = 300.0
 
+# Vertical speed
 const accel_modifier = 3
 var acceleration = 90
 var min_accel = 60
 var max_accel = 200
-
+# Horizontal speed and accel/brake
+const LATERAL_SPEED = 300.0
 var lat_accel = 1600.0
 var lat_brake = 1500.0
 
 var cur_direction = 0
+
+# Fuel management
+var max_fuel = 100
+var cur_fuel = 100
+var base_fuel_rate = 2
+
+signal fuel_update(val)
 
 func _physics_process(delta: float) -> void:
 	
@@ -45,6 +53,23 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, lat_brake * delta)
 	move_and_slide()
+	
+	#Fuel management
+	var speed_factor = acceleration / max_accel
+	var consumption = base_fuel_rate * (1.0 + speed_factor) * delta
+	fuel_consumption(clamp(consumption, 0.0, max_fuel))
+
+func fuel_consumption(value):
+	cur_fuel -= value
+	emit_signal("fuel_update", cur_fuel)
+	if cur_fuel < 1:
+		print("Out of fuel")
+
+func fuel_refill(value):
+	cur_fuel = min(cur_fuel + value, max_fuel)
+	emit_signal("fuel_update", cur_fuel)
+	if cur_fuel == max_fuel:
+		print("Fuel is at 100% capacity!")
 
 func shoot():
 	var left_missile = bullet.instantiate()

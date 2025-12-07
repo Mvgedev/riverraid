@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var player_jet: CharacterBody2D = $"Player Jet"
 
+@onready var bottom_ui: Control = $"CanvasLayer/Bottom UI"
+
 @onready var levels: Node = $Levels
 
 const SAMPLE_1 = preload("res://scenes/entities/levels/sample_level.tscn")
@@ -10,7 +12,9 @@ const SAMPLE_3 = preload("res://scenes/entities/levels/sample_level_3.tscn")
 
 
 func _ready() -> void:
-	generate_next_chunk()
+	player_jet.connect("fuel_update", update_fuel)
+	update_fuel(player_jet.cur_fuel)
+	generate_next_chunk(0)
 	# TMP to set 1st chunk post to above UI
 	levels.get_child(0).position.y = -110
 	levels.get_child(0).define_y(-110)
@@ -27,12 +31,16 @@ func _process(delta: float) -> void:
 		child.scroll_level(speed)
 
 
-func generate_next_chunk():
-	var random = randi_range(0, 2)
+func generate_next_chunk(val := -1):
+	var id = 0
+	if val >= 0 and val <= 2:
+		id = val
+	else:
+		id = randi_range(0, 2)
 	var chunk: Level
-	if random == 0:
+	if id == 0:
 		chunk = SAMPLE_1.instantiate()
-	elif random == 1:
+	elif id == 1:
 		chunk = SAMPLE_2.instantiate()
 	else:
 		chunk = SAMPLE_3.instantiate()
@@ -56,6 +64,9 @@ func populate_next_chunk(chunk: Level):
 				enemy.enable(rand)
 				current += rand as int
 	
+
+func update_fuel(val):
+	bottom_ui.fuel_update(val)
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print("Level scrolled")

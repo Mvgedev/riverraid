@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://brycg6dfshpwg"]
+
+[ext_resource type="Script" uid="uid://hcg1xwsir6dd" path="res://scripts/entities/ammo_depot.gd" id="1_mcba3"]
+[ext_resource type="Texture2D" uid="uid://bp3ag3v3erpbw" path="res://assets/sprites/Entities/Ammo depot.png" id="1_shgc1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mcba3"]
+size = Vector2(30, 25)
+
+[node name="Ammo Depot" type="Area2D"]
+script = ExtResource("1_mcba3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_shgc1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_mcba3")
