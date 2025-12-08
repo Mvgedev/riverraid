@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://nnlswhqy5y5g"]
+[gd_scene load_steps=10 format=3 uid="uid://nnlswhqy5y5g"]
 
 [ext_resource type="Script" uid="uid://ceobwuskrowcp" path="res://scenes/gui/bottom_ui.gd" id="1_2oaib"]
-[ext_resource type="Texture2D" uid="uid://10g7kuy1kfct" path="res://assets/sprites/UI/UI_BottomBar.png" id="1_7ld1u"]
+[ext_resource type="Texture2D" uid="uid://bfk03yscrnl6b" path="res://assets/sprites/UI/UI_BottomBar.png" id="1_7ld1u"]
+[ext_resource type="Texture2D" uid="uid://clg8tvvm8jtgr" path="res://assets/sprites/UI/Fuel_empty.png" id="3_86bgt"]
+[ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="3_obt63"]
+[ext_resource type="Texture2D" uid="uid://bg4073o1i5ykt" path="res://assets/sprites/UI/Structure Empty.png" id="4_5ffdf"]
+[ext_resource type="Texture2D" uid="uid://doaidcmy2sp8k" path="res://assets/sprites/UI/Fuel_Full.png" id="4_obt63"]
+[ext_resource type="Texture2D" uid="uid://ecco26e7bhv0" path="res://assets/sprites/UI/Structure Full.png" id="5_gcwx4"]
+[ext_resource type="Texture2D" uid="uid://5de7oho0h6yp" path="res://assets/sprites/UI/Ammo_Empty.png" id="8_5ng3d"]
+[ext_resource type="Texture2D" uid="uid://djmas3ub1gvca" path="res://assets/sprites/UI/Ammo Full.png" id="9_x4uaq"]
 
 [node name="Bottom UI" type="Control"]
 layout_mode = 3
@@ -20,22 +27,100 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -135.0
-offset_top = -110.0
+offset_top = -64.0
 offset_right = 135.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("1_7ld1u")
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -60.0
-offset_top = -80.0
-offset_right = 60.0
-offset_bottom = -53.0
+offset_left = 15.0
+offset_top = -64.0
+offset_right = -15.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+clip_contents = true
+layout_mode = 2
+alignment = 1
+
+[node name="Structure" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Structure"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_obt63")
+text = "HP:  "
+
+[node name="Health_bar" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer/Structure"]
+layout_mode = 2
+value = 56.0
+texture_under = ExtResource("4_5ffdf")
+texture_progress = ExtResource("5_gcwx4")
+
+[node name="Fuel" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/Fuel"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_obt63")
+text = "Fuel:"
+vertical_alignment = 1
+
+[node name="Fuel Gauge" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer/Fuel"]
+layout_mode = 2
+value = 87.0
+texture_under = ExtResource("3_86bgt")
+texture_progress = ExtResource("4_obt63")
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Score" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Score"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_obt63")
+text = "Score:"
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/VBoxContainer2/Score"]
+custom_minimum_size = Vector2(54, 0)
+layout_mode = 2
+size_flags_horizontal = 9
+theme_override_fonts/font = ExtResource("3_obt63")
+text = "1999"
+horizontal_alignment = 2
+clip_text = true
+
+[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+
+[node name="Ammo" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/Ammo"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_obt63")
+text = "Ammo:"
+
+[node name="Ammo_gauge" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer2/Ammo"]
+layout_mode = 2
+size_flags_horizontal = 3
+step = 33.0
+value = 66.0
+texture_under = ExtResource("8_5ng3d")
+texture_progress = ExtResource("9_x4uaq")

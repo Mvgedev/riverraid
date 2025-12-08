@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfk03yscrnl6b"
-path="res://.godot/imported/UI_BottomBar.png-36b8278c043650f1bbf90e352f6b6240.ctex"
+uid="uid://cvqyowejhbcww"
+path="res://.godot/imported/Gate_level.png-a4093f8a025ae2cf3eadc38bc23509fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI/UI_BottomBar.png"
-dest_files=["res://.godot/imported/UI_BottomBar.png-36b8278c043650f1bbf90e352f6b6240.ctex"]
+source_file="res://assets/sprites/Levels/Gate_level.png"
+dest_files=["res://.godot/imported/Gate_level.png-a4093f8a025ae2cf3eadc38bc23509fd.ctex"]
 
 [params]
 

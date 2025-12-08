@@ -2,6 +2,7 @@ extends Enemy
 class_name JetFighter
 
 @onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var shadow: Sprite2D = $Shadow
 
 @export var direction = 1
 @export var speed = 200
@@ -10,6 +11,7 @@ var launched = false
 
 func _ready():
 	sprite_2d.flip_h = true if direction == 1 else false
+	shadow.flip_h = sprite_2d.flip_h
 	visible = false
 
 func launch_jet(val):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cromugeuliao0"]
 
-[ext_resource type="Texture2D" uid="uid://dasmlnk242tds" path="res://assets/sprites/Levels/BG Test.png" id="1_8fgm0"]
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_v25xl"]
+[ext_resource type="Texture2D" uid="uid://cvqyowejhbcww" path="res://assets/sprites/Levels/Gate_level.png" id="2_36rq5"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="3_cp38u"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_m8kjt"]
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="4_m8kjt"]
@@ -21,7 +21,7 @@ script = ExtResource("1_v25xl")
 metadata/_custom_type_script = "uid://cknvxfrutjwkb"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8fgm0")
+texture = ExtResource("2_36rq5")
 centered = false
 
 [node name="Borders" type="Node" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://brycg6dfshpwg"]
+[gd_scene load_steps=5 format=3 uid="uid://brycg6dfshpwg"]
 
 [ext_resource type="Script" uid="uid://hcg1xwsir6dd" path="res://scripts/entities/ammo_depot.gd" id="1_mcba3"]
 [ext_resource type="Texture2D" uid="uid://bp3ag3v3erpbw" path="res://assets/sprites/Entities/Ammo depot.png" id="1_shgc1"]
+[ext_resource type="Texture2D" uid="uid://bf2pobi6qv5w0" path="res://assets/sprites/Entities/Shadow.png" id="2_p4h1s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcba3"]
 size = Vector2(30, 25)
@@ -10,6 +11,12 @@ size = Vector2(30, 25)
 collision_layer = 64
 collision_mask = 130
 script = ExtResource("1_mcba3")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.5882353)
+position = Vector2(0, 11)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_p4h1s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_shgc1")

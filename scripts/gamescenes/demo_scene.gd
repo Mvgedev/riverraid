@@ -3,21 +3,30 @@ extends Node2D
 @onready var player_jet: CharacterBody2D = $"Player Jet"
 
 @onready var bottom_ui: Control = $"CanvasLayer/Bottom UI"
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var levels: Node = $Levels
 
 const SAMPLE_1 = preload("res://scenes/entities/levels/sample_level.tscn")
 const SAMPLE_2 = preload("res://scenes/entities/levels/sample_level_2.tscn")
 const SAMPLE_3 = preload("res://scenes/entities/levels/sample_level_3.tscn")
-
+const chunk_size = 600
 
 func _ready() -> void:
 	player_jet.connect("fuel_update", update_fuel)
+	player_jet.connect("ammo_update", update_ammo)
+	player_jet.connect("health_update", update_health)
+	player_jet.connect("jet_explode", game_over)
+	player_jet.connect("no_ammo", out_of_ammo)
+	ScoreSystem.connect("update_score", update_score)
+	update_health(player_jet.cur_health)
+	update_ammo(player_jet.cur_ammo)
 	update_fuel(player_jet.cur_fuel)
+	update_score()
 	generate_next_chunk(0)
 	# TMP to set 1st chunk post to above UI
-	levels.get_child(0).position.y = -110
-	levels.get_child(0).define_y(-110)
+	levels.get_child(0).position.y = -64
+	levels.get_child(0).define_y(-64)
 	generate_next_chunk()
 	generate_next_chunk()
 	pass
@@ -35,8 +44,8 @@ func generate_next_chunk(val := -1):
 	var id = 0
 	if val >= 0 and val <= 2:
 		id = val
-	else:
-		id = randi_range(0, 2)
+	#else:
+	#	id = randi_range(0, 2)
 	var chunk: Level
 	if id == 0:
 		chunk = SAMPLE_1.instantiate()
@@ -45,7 +54,7 @@ func generate_next_chunk(val := -1):
 	else:
 		chunk = SAMPLE_3.instantiate()
 	if levels.get_child_count() > 0:
-		var posy = levels.get_child(levels.get_child_count() - 1).position.y - 576
+		var posy = levels.get_child(levels.get_child_count() - 1).position.y - chunk_size
 		chunk.position.y = posy
 	levels.add_child(chunk)
 	populate_next_chunk(chunk)
@@ -65,8 +74,28 @@ func populate_next_chunk(chunk: Level):
 				current += rand as int
 	
 
+func update_score():
+	bottom_ui.score_update(ScoreSystem.cur_score)
+
 func update_fuel(val):
 	bottom_ui.fuel_update(val)
+
+func update_health(val):
+	var health_val = float(val) / float(player_jet.max_health) * 100.0
+	bottom_ui.health_update(health_val)
+
+func game_over():
+	print("Game over")
+	pass
+
+func update_ammo(val):
+	print("Cur ammo: ", val)
+	var ammo_val = float(val) / float(player_jet.max_ammo) * 100.0
+	print("Value: ", ammo_val)
+	bottom_ui.ammo_update(ammo_val)
+
+func out_of_ammo():
+	animation_player.play("out_of_ammo")
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	print("Level scrolled")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1m7ewyg6md6d"]
+[gd_scene load_steps=9 format=3 uid="uid://b1m7ewyg6md6d"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_5xegj"]
 [ext_resource type="Texture2D" uid="uid://d1nqrs2kxicuc" path="res://assets/sprites/Levels/BG Test2.png" id="1_xkqx6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_v6h0t"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="4_v6h0t"]
 [ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/jetfighter.tscn" id="6_54xfp"]
+[ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/fuel_depot.tscn" id="7_mdix1"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5xegj"]
 b = Vector2(270, 0)
@@ -61,5 +62,8 @@ position = Vector2(282, 18)
 direction = -1
 
 [node name="FuelSpawns" type="Node" parent="."]
+
+[node name="Fuel Depot" parent="FuelSpawns" instance=ExtResource("7_mdix1")]
+position = Vector2(171, 233)
 
 [node name="SupplySpawns" type="Node" parent="."]

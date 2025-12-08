@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfk03yscrnl6b"
-path="res://.godot/imported/UI_BottomBar.png-36b8278c043650f1bbf90e352f6b6240.ctex"
+uid="uid://5de7oho0h6yp"
+path="res://.godot/imported/Ammo_Empty.png-9307e369156587e2299f22e7b0dfae17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI/UI_BottomBar.png"
-dest_files=["res://.godot/imported/UI_BottomBar.png-36b8278c043650f1bbf90e352f6b6240.ctex"]
+source_file="res://assets/sprites/UI/Ammo_Empty.png"
+dest_files=["res://.godot/imported/Ammo_Empty.png-9307e369156587e2299f22e7b0dfae17.ctex"]
 
 [params]
 

@@ -21,6 +21,12 @@ collision_layer = 2
 collision_mask = 69
 script = ExtResource("1_eto2g")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.5882353)
+position = Vector2(0, 19)
+scale = Vector2(1, 0.4)
+texture = ExtResource("1_u71h6")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_u71h6")
 
@@ -30,12 +36,16 @@ shape = SubResource("CapsuleShape2D_u71h6")
 
 [node name="Left Cannon" type="Area2D" parent="."]
 position = Vector2(-8, 3)
+collision_layer = 256
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Left Cannon"]
 shape = SubResource("CapsuleShape2D_eto2g")
 
 [node name="Right Cannon" type="Area2D" parent="."]
 position = Vector2(8, 3)
+collision_layer = 256
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Right Cannon"]
 shape = SubResource("CapsuleShape2D_ibse8")

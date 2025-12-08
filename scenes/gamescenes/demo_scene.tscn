@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4fxmbwhxhtro"]
+[gd_scene load_steps=12 format=3 uid="uid://c4fxmbwhxhtro"]
 
 [ext_resource type="Script" uid="uid://d3w2j7657ko64" path="res://scripts/gamescenes/demo_scene.gd" id="1_d7yel"]
 [ext_resource type="PackedScene" uid="uid://nnlswhqy5y5g" path="res://scenes/gui/bottom_ui.tscn" id="1_nxoo5"]
 [ext_resource type="PackedScene" uid="uid://cwpwgqius8x6h" path="res://scenes/entities/player_jet.tscn" id="2_q0ckh"]
+[ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="4_d7yel"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mauty"]
 
@@ -14,6 +15,43 @@ b = Vector2(273, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_d7yel"]
 b = Vector2(0, 484)
+
+[sub_resource type="Animation" id="Animation_d7yel"]
+resource_name = "out_of_ammo"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Out of Ammo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.25, 0.35, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hfv4q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Out of Ammo:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bmdg"]
+_data = {
+&"RESET": SubResource("Animation_hfv4q"),
+&"out_of_ammo": SubResource("Animation_d7yel")
+}
 
 [node name="Demo Scene" type="Node2D"]
 script = ExtResource("1_d7yel")
@@ -70,11 +108,32 @@ shape = SubResource("SegmentShape2D_d7yel")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Bottom UI" parent="CanvasLayer" instance=ExtResource("1_nxoo5")]
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
 grow_vertical = 0
+
+[node name="Out of Ammo" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -11.5
+offset_right = 85.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_d7yel")
+theme_override_font_sizes/font_size = 32
+text = "<!> OUT OF AMMO <!>"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5bmdg")
+}
 
 [connection signal="area_entered" from="Level Limit/LevelRecycler" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Level Limit/FullLevel Detection" to="." method="_on_full_level_detection_area_entered"]
