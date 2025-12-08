@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4fxmbwhxhtro"]
+[gd_scene load_steps=8 format=3 uid="uid://c4fxmbwhxhtro"]
 
 [ext_resource type="Script" uid="uid://d3w2j7657ko64" path="res://scripts/gamescenes/demo_scene.gd" id="1_d7yel"]
 [ext_resource type="PackedScene" uid="uid://nnlswhqy5y5g" path="res://scenes/gui/bottom_ui.tscn" id="1_nxoo5"]
@@ -6,8 +6,14 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mauty"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mauty"]
+size = Vector2(290, 4)
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_mauty"]
 b = Vector2(273, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_d7yel"]
+b = Vector2(0, 484)
 
 [node name="Demo Scene" type="Node2D"]
 script = ExtResource("1_d7yel")
@@ -30,6 +36,15 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/LevelRecycler"]
 shape = SubResource("WorldBoundaryShape2D_mauty")
 
+[node name="FullLevel Detection" type="Area2D" parent="Level Limit"]
+position = Vector2(-3, -11)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/FullLevel Detection"]
+position = Vector2(135, 8)
+shape = SubResource("RectangleShape2D_mauty")
+
 [node name="BulletLimit" type="Area2D" parent="Level Limit"]
 position = Vector2(-1, -2)
 collision_layer = 32
@@ -37,6 +52,20 @@ collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/BulletLimit"]
 shape = SubResource("SegmentShape2D_mauty")
+
+[node name="LeftJetExit" type="Area2D" parent="Level Limit"]
+position = Vector2(-44, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/LeftJetExit"]
+shape = SubResource("SegmentShape2D_d7yel")
+
+[node name="RightJetExit" type="Area2D" parent="Level Limit"]
+position = Vector2(314, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/RightJetExit"]
+shape = SubResource("SegmentShape2D_d7yel")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -48,4 +77,7 @@ anchor_right = 0.5
 grow_vertical = 0
 
 [connection signal="area_entered" from="Level Limit/LevelRecycler" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Level Limit/FullLevel Detection" to="." method="_on_full_level_detection_area_entered"]
 [connection signal="body_entered" from="Level Limit/BulletLimit" to="." method="_on_bullet_limit_body_entered"]
+[connection signal="body_entered" from="Level Limit/LeftJetExit" to="." method="_on_left_jet_exit_body_entered"]
+[connection signal="body_entered" from="Level Limit/RightJetExit" to="." method="_on_right_jet_exit_body_entered"]

@@ -8,7 +8,6 @@ extends Enemy
 @export var boat_speed = 30
 var direction = 1
 
-
 func _process(delta: float) -> void:
 	if rc_left.is_colliding():
 		direction = 1

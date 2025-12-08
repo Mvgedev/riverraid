@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1m7ewyg6md6d"]
+[gd_scene load_steps=8 format=3 uid="uid://b1m7ewyg6md6d"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_5xegj"]
 [ext_resource type="Texture2D" uid="uid://d1nqrs2kxicuc" path="res://assets/sprites/Levels/BG Test2.png" id="1_xkqx6"]
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="3_rvk5c"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_v6h0t"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="4_v6h0t"]
+[ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/jetfighter.tscn" id="6_54xfp"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5xegj"]
 b = Vector2(270, 0)
@@ -54,6 +55,10 @@ position = Vector2(81, 226)
 
 [node name="Boat" parent="EnemySpawns" instance=ExtResource("4_v6h0t")]
 position = Vector2(67, 18)
+
+[node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("6_54xfp")]
+position = Vector2(282, 18)
+direction = -1
 
 [node name="FuelSpawns" type="Node" parent="."]
 

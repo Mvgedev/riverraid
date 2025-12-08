@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://cromugeuliao0"]
+[gd_scene load_steps=11 format=3 uid="uid://cromugeuliao0"]
 
 [ext_resource type="Texture2D" uid="uid://dasmlnk242tds" path="res://assets/sprites/Levels/BG Test.png" id="1_8fgm0"]
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_v25xl"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="3_cp38u"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_m8kjt"]
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="4_m8kjt"]
+[ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/jetfighter.tscn" id="6_og233"]
+[ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/fuel_depot.tscn" id="7_2e7lt"]
+[ext_resource type="PackedScene" uid="uid://brycg6dfshpwg" path="res://scenes/entities/ammo_depot.tscn" id="8_36rq5"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8fgm0"]
 a = Vector2(32, -1)
@@ -52,6 +55,19 @@ position = Vector2(223, 238)
 [node name="Boat2" parent="EnemySpawns" instance=ExtResource("3_cp38u")]
 position = Vector2(134, 354)
 
+[node name="Node2D" parent="EnemySpawns" instance=ExtResource("6_og233")]
+position = Vector2(282, 50)
+direction = -1
+
+[node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("6_og233")]
+position = Vector2(-10, 189)
+
 [node name="FuelSpawns" type="Node" parent="."]
 
+[node name="Fuel Depot" parent="FuelSpawns" instance=ExtResource("7_2e7lt")]
+position = Vector2(214, 82)
+
 [node name="SupplySpawns" type="Node" parent="."]
+
+[node name="Ammo Depot" parent="SupplySpawns" instance=ExtResource("8_36rq5")]
+position = Vector2(78, 250)

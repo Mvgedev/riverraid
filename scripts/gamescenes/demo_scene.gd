@@ -73,8 +73,22 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	area.get_parent().queue_free()
 	call_deferred("generate_next_chunk")
 
-
 func _on_bullet_limit_body_entered(body: Node2D) -> void:
 	if body is Bullet:
 		body.queue_free()
 		print("Bullet reached end")
+
+
+func _on_left_jet_exit_body_entered(body: Node2D) -> void:
+	print("Left exit")
+	body.get_parent().queue_free()
+
+
+func _on_right_jet_exit_body_entered(body: Node2D) -> void:
+	print("Right exit")
+	body.get_parent().queue_free()
+
+
+func _on_full_level_detection_area_entered(area: Area2D) -> void:
+	print("Should launch")
+	area.get_parent().launch_jet()
