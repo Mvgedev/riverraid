@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_5xegj"]
 [ext_resource type="Texture2D" uid="uid://d1nqrs2kxicuc" path="res://assets/sprites/Levels/BG Test2.png" id="1_xkqx6"]
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="3_rvk5c"]
-[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_v6h0t"]
+[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/obstacles.tscn" id="3_v6h0t"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="4_v6h0t"]
 [ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/jetfighter.tscn" id="6_54xfp"]
 [ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/fuel_depot.tscn" id="7_mdix1"]

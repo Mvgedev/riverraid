@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvqyowejhbcww"
-path="res://.godot/imported/Gate_level.png-a4093f8a025ae2cf3eadc38bc23509fd.ctex"
+uid="uid://cm7vo2krnmoul"
+path="res://.godot/imported/Gate_level.png-d8cb133b217057ff84059b3c45e6089f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Levels/Gate_level.png"
-dest_files=["res://.godot/imported/Gate_level.png-a4093f8a025ae2cf3eadc38bc23509fd.ctex"]
+source_file="res://assets/sprites/Levels/Layouts/Gate_level.png"
+dest_files=["res://.godot/imported/Gate_level.png-d8cb133b217057ff84059b3c45e6089f.ctex"]
 
 [params]
 

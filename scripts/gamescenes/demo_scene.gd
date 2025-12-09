@@ -7,10 +7,11 @@ extends Node2D
 
 @onready var levels: Node = $Levels
 
-const SAMPLE_1 = preload("res://scenes/entities/levels/sample_level.tscn")
-const SAMPLE_2 = preload("res://scenes/entities/levels/sample_level_2.tscn")
-const SAMPLE_3 = preload("res://scenes/entities/levels/sample_level_3.tscn")
-const chunk_size = 600
+const SAMPLE_1 = preload("res://scenes/levels/sample_level.tscn")
+const SAMPLE_2 = preload("res://scenes/levels/sample_level_2.tscn")
+const SAMPLE_3 = preload("res://scenes/levels/sample_level_3.tscn")
+const SAMPLE_4 = preload("res://scenes/levels/gate_level.tscn")
+const chunk_size = 607 # Magic number for level size
 
 func _ready() -> void:
 	player_jet.connect("fuel_update", update_fuel)
@@ -30,10 +31,9 @@ func _ready() -> void:
 	generate_next_chunk()
 	generate_next_chunk()
 	pass
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
 	for child in levels.get_children():
 		var speed = player_jet.acceleration * delta
 		child.position.y += player_jet.acceleration * delta
@@ -41,18 +41,21 @@ func _process(delta: float) -> void:
 
 
 func generate_next_chunk(val := -1):
-	var id = 0
+	var id
 	if val >= 0 and val <= 2:
 		id = val
-	#else:
-	#	id = randi_range(0, 2)
+	else:
+		id = randi_range(0, 2)
 	var chunk: Level
+	id = 4
 	if id == 0:
 		chunk = SAMPLE_1.instantiate()
 	elif id == 1:
 		chunk = SAMPLE_2.instantiate()
-	else:
+	elif id == 2:
 		chunk = SAMPLE_3.instantiate()
+	else:
+		chunk = SAMPLE_4.instantiate()
 	if levels.get_child_count() > 0:
 		var posy = levels.get_child(levels.get_child_count() - 1).position.y - chunk_size
 		chunk.position.y = posy

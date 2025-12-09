@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_aahv5"]
 [ext_resource type="Texture2D" uid="uid://ch8fw1kl31rvp" path="res://assets/sprites/Levels/BG Test3.png" id="2_u8mn4"]
-[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/entities/levels/obstacles.tscn" id="3_8fsr0"]
+[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/obstacles.tscn" id="3_8fsr0"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="3_r4xjk"]
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="4_8fsr0"]
 [ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/jetfighter.tscn" id="6_76joi"]
