@@ -1,6 +1,6 @@
 extends Enemy
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow: Sprite2D = $Shadow
 
 @onready var rc_left: RayCast2D = $RCLeft

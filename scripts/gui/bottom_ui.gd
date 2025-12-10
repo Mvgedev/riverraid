@@ -1,12 +1,12 @@
 extends Control
 
 # Resources
-@onready var health_bar: TextureProgressBar = $Control/HBoxContainer/VBoxContainer/Structure/Health_bar
-@onready var fuel_gauge: TextureProgressBar = $"Control/HBoxContainer/VBoxContainer/Fuel/Fuel Gauge"
-@onready var ammo_gauge: TextureProgressBar = $Control/HBoxContainer/VBoxContainer2/Ammo/Ammo_gauge
+@onready var fuel_gauge: TextureProgressBar = $"Control/Mid Box/Fuel/Fuel Gauge"
+@onready var ammo_gauge: TextureProgressBar = $Control/Ammo_gauge
+@onready var health_bar: TextureProgressBar = $"Control/Mid Box/Structure/Health_bar"
 
 # Score
-@onready var score_label: Label = $Control/HBoxContainer/VBoxContainer2/Score/ScoreLabel
+@onready var score_label: Label = $Control/Score/ScoreLabel
 
 
 func fuel_update(value):

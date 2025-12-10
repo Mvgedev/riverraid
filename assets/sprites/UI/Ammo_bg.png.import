@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d57lkapxc3l8"
-path="res://.godot/imported/UI_BottomBar.png-36b8278c043650f1bbf90e352f6b6240.ctex"
+uid="uid://b7fqf2od0ibub"
+path="res://.godot/imported/Ammo_bg.png-7d0f4260c20e895ceb8593740f6a45bf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/UI/UI_BottomBar.png"
-dest_files=["res://.godot/imported/UI_BottomBar.png-36b8278c043650f1bbf90e352f6b6240.ctex"]
+source_file="res://assets/sprites/UI/Ammo_bg.png"
+dest_files=["res://.godot/imported/Ammo_bg.png-7d0f4260c20e895ceb8593740f6a45bf.ctex"]
 
 [params]
 
