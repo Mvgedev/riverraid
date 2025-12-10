@@ -7,10 +7,13 @@ extends Node2D
 
 @onready var levels: Node = $Levels
 
-const SAMPLE_1 = preload("res://scenes/levels/sample_level.tscn")
-const SAMPLE_2 = preload("res://scenes/levels/sample_level_2.tscn")
-const SAMPLE_3 = preload("res://scenes/levels/sample_level_3.tscn")
-const SAMPLE_4 = preload("res://scenes/levels/gate_level.tscn")
+const GATE_LEVEL = preload("res://scenes/levels/gate_level.tscn")
+const SAMPLE_1 = preload("res://scenes/levels/layout_1.tscn")
+const SAMPLE_2 = preload("res://scenes/levels/layout_2.tscn")
+const SAMPLE_3 = preload("res://scenes/levels/layout_3.tscn")
+const SAMPLE_4 = preload("res://scenes/levels/layout_4.tscn")
+const SAMPLE_5 = preload("res://scenes/levels/layout_5.tscn")
+const SAMPLE_6 = preload("res://scenes/levels/layout_6.tscn")
 const chunk_size = 607 # Magic number for level size
 
 func _ready() -> void:
@@ -24,7 +27,7 @@ func _ready() -> void:
 	update_ammo(player_jet.cur_ammo)
 	update_fuel(player_jet.cur_fuel)
 	update_score()
-	generate_next_chunk(0)
+	generate_next_chunk(6)
 	# TMP to set 1st chunk post to above UI
 	levels.get_child(0).position.y = -64
 	levels.get_child(0).define_y(-64)
@@ -42,20 +45,25 @@ func _process(delta: float) -> void:
 
 func generate_next_chunk(val := -1):
 	var id
-	if val >= 0 and val <= 2:
+	if val >= 0 and val <= 6:
 		id = val
 	else:
-		id = randi_range(0, 2)
+		id = randi_range(0, 5)
 	var chunk: Level
-	id = 4
 	if id == 0:
 		chunk = SAMPLE_1.instantiate()
 	elif id == 1:
 		chunk = SAMPLE_2.instantiate()
 	elif id == 2:
 		chunk = SAMPLE_3.instantiate()
-	else:
+	elif id == 3:
 		chunk = SAMPLE_4.instantiate()
+	elif id == 4:
+		chunk = SAMPLE_5.instantiate()
+	elif id == 5:
+		chunk = SAMPLE_6.instantiate()
+	elif id == 6:
+		chunk = GATE_LEVEL.instantiate()
 	if levels.get_child_count() > 0:
 		var posy = levels.get_child(levels.get_child_count() - 1).position.y - chunk_size
 		chunk.position.y = posy

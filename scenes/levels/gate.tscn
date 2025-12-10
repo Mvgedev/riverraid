@@ -1,0 +1,101 @@
+[gd_scene load_steps=15 format=3 uid="uid://rjx2rg7p4tah"]
+
+[ext_resource type="Script" uid="uid://gl8jgfj378t7" path="res://scripts/levels/gate.gd" id="1_avsut"]
+[ext_resource type="Texture2D" uid="uid://b8gnurqowq0j3" path="res://assets/sprites/Levels/Layouts/Gate-up.png" id="1_dhssn"]
+[ext_resource type="Texture2D" uid="uid://cjct8qhkfl2vi" path="res://assets/sprites/Levels/Layouts/Gate_crashed.png" id="2_re1d3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5g43"]
+atlas = ExtResource("2_re1d3")
+region = Rect2(0, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avsut"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(0, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_re1d3"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(270, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf2l6"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(540, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfnou"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(810, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvfov"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(1080, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0edwn"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(1350, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13fu8"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(1620, 0, 270, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tmmb"]
+atlas = ExtResource("1_dhssn")
+region = Rect2(1890, 0, 270, 600)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5g43"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5g43")
+}],
+"loop": true,
+"name": &"crashed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avsut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_re1d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf2l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfnou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvfov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0edwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13fu8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tmmb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_re1d3"]
+radius = 13.000002
+height = 148.0
+
+[node name="Gate" type="Area2D"]
+script = ExtResource("1_avsut")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_x5g43")
+animation = &"crashed"
+autoplay = "default"
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(135, 34)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_re1d3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

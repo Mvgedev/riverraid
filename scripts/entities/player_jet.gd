@@ -15,20 +15,20 @@ var cd_time = 0.5
 
 # Vertical speed
 const accel_modifier = 3
-var acceleration = 90
-var min_accel = 60
-var max_accel = 200
+var acceleration = 75
+var min_accel = 45
+var max_accel = 150
 # Horizontal speed and accel/brake
-const LATERAL_SPEED = 300.0
+const LATERAL_SPEED = 200.0
 var lat_accel = 1600.0
-var lat_brake = 1500.0
+var lat_brake = 1200.0
 
 var cur_direction = 0
 
 # Fuel management
 var max_fuel = 100
 var cur_fuel = 100
-var base_fuel_rate = 2
+var base_fuel_rate = 1
 var base_refill = 30
 var on_depot = false
 
@@ -92,8 +92,8 @@ func fuel_refill(value):
 	cur_fuel = min(cur_fuel + value, max_fuel)
 	emit_signal("fuel_update", cur_fuel)
 
-func hurt():
-	cur_health -= 1
+func hurt(value := 1):
+	cur_health -= value
 	cur_health = max(cur_health, 0)
 	emit_signal("health_update", cur_health)
 	if cur_health > 0:
