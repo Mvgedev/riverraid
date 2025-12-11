@@ -1,12 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://fmlpdt63ao1w"]
+[gd_scene load_steps=12 format=3 uid="uid://fmlpdt63ao1w"]
 
 [ext_resource type="Script" uid="uid://d0dfky0fcubdi" path="res://scripts/entities/jetfighter.gd" id="1_2q57n"]
 [ext_resource type="Texture2D" uid="uid://7o62ttpm80tp" path="res://assets/sprites/Entities/JetFighter.png" id="1_xvqkj"]
 [ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/killzone.tscn" id="3_2q57n"]
+[ext_resource type="Texture2D" uid="uid://ussy5kvji7b5" path="res://assets/sprites/Entities/JetFighter-Sheet.png" id="3_nw5vw"]
+[ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/explosion.tscn" id="5_ge1kf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge1kf"]
+atlas = ExtResource("3_nw5vw")
+region = Rect2(0, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lacb4"]
+atlas = ExtResource("3_nw5vw")
+region = Rect2(42, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu3sb"]
+atlas = ExtResource("3_nw5vw")
+region = Rect2(84, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6fhs"]
+atlas = ExtResource("3_nw5vw")
+region = Rect2(126, 0, 42, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x316x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge1kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lacb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu3sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6fhs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvqkj"]
-radius = 4.0
-height = 24.0
+radius = 2.0
+height = 26.0
 
 [node name="Jet Fighter" type="Node2D"]
 script = ExtResource("1_2q57n")
@@ -19,14 +57,22 @@ position = Vector2(0, 13)
 scale = Vector2(1, 0.4)
 texture = ExtResource("1_xvqkj")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_xvqkj")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_x316x")
+autoplay = "default"
+frame_progress = 0.06942121
 
 [node name="Killzone" parent="." instance=ExtResource("3_2q57n")]
 collision_layer = 4
 collision_mask = 131
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(0, 1)
+position = Vector2(-3, 2)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_xvqkj")
+
+[node name="Explosion" parent="." instance=ExtResource("5_ge1kf")]
+visible = false
+
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

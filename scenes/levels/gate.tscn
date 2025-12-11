@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://rjx2rg7p4tah"]
+[gd_scene load_steps=19 format=3 uid="uid://rjx2rg7p4tah"]
 
 [ext_resource type="Script" uid="uid://gl8jgfj378t7" path="res://scripts/levels/gate.gd" id="1_avsut"]
 [ext_resource type="Texture2D" uid="uid://b8gnurqowq0j3" path="res://assets/sprites/Levels/Layouts/Gate-up.png" id="1_dhssn"]
 [ext_resource type="Texture2D" uid="uid://cjct8qhkfl2vi" path="res://assets/sprites/Levels/Layouts/Gate_crashed.png" id="2_re1d3"]
+[ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/explosion.tscn" id="4_xf2l6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5g43"]
 atlas = ExtResource("2_re1d3")
@@ -84,12 +85,23 @@ animations = [{
 radius = 13.000002
 height = 148.0
 
+[sub_resource type="Animation" id="Animation_xf2l6"]
+resource_name = "Explosion"
+
+[sub_resource type="Animation" id="Animation_rfnou"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lvfov"]
+_data = {
+&"Explosion": SubResource("Animation_xf2l6"),
+&"RESET": SubResource("Animation_rfnou")
+}
+
 [node name="Gate" type="Area2D"]
 script = ExtResource("1_avsut")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x5g43")
-animation = &"crashed"
 autoplay = "default"
 centered = false
 
@@ -97,5 +109,56 @@ centered = false
 position = Vector2(135, 34)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_re1d3")
+
+[node name="Explosions" type="Node2D" parent="."]
+
+[node name="Explosion" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(136, 39)
+
+[node name="Explosion2" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(119, 25)
+
+[node name="Explosion3" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(149, 29)
+
+[node name="Explosion4" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(110, 39)
+
+[node name="Explosion5" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(164, 40)
+
+[node name="Explosion6" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(172, 25)
+
+[node name="Explosion7" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(91, 33)
+
+[node name="Explosion8" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(187, 37)
+
+[node name="Explosion9" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(75, 39)
+
+[node name="Explosion10" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(202, 25)
+
+[node name="Explosion11" parent="Explosions" instance=ExtResource("4_xf2l6")]
+visible = false
+position = Vector2(68, 23)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lvfov")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://din67ad7y0c5d"
-path="res://.godot/imported/Helicopter2-Sheet.png-0b28de6e11cb24828cde989a27d6b4ab.ctex"
+uid="uid://eyckeh00gx4i"
+path="res://.godot/imported/Crashed_boat_sheet.png-e4e08235a5bff2343e9f72663baab2e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Entities/Helicopter2-Sheet.png"
-dest_files=["res://.godot/imported/Helicopter2-Sheet.png-0b28de6e11cb24828cde989a27d6b4ab.ctex"]
+source_file="res://assets/sprites/Entities/Crashed_boat_sheet.png"
+dest_files=["res://.godot/imported/Crashed_boat_sheet.png-e4e08235a5bff2343e9f72663baab2e4.ctex"]
 
 [params]
 

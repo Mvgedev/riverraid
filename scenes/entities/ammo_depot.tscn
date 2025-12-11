@@ -1,8 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://brycg6dfshpwg"]
+[gd_scene load_steps=10 format=3 uid="uid://brycg6dfshpwg"]
 
 [ext_resource type="Script" uid="uid://hcg1xwsir6dd" path="res://scripts/entities/ammo_depot.gd" id="1_mcba3"]
 [ext_resource type="Texture2D" uid="uid://bp3ag3v3erpbw" path="res://assets/sprites/Entities/Ammo depot.png" id="1_shgc1"]
-[ext_resource type="Texture2D" uid="uid://bf2pobi6qv5w0" path="res://assets/sprites/Entities/Shadow.png" id="2_p4h1s"]
+[ext_resource type="Texture2D" uid="uid://o5pbtiwrdewu" path="res://assets/sprites/Entities/Ammo depot-Sheet.png" id="3_p4h1s"]
+[ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/explosion.tscn" id="4_we0th"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we0th"]
+atlas = ExtResource("3_p4h1s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5sv5"]
+atlas = ExtResource("3_p4h1s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdglf"]
+atlas = ExtResource("3_p4h1s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otqn7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we0th")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5sv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdglf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mcba3"]
 size = Vector2(30, 25)
@@ -13,16 +43,23 @@ collision_mask = 130
 script = ExtResource("1_mcba3")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.5882353)
-position = Vector2(0, 11)
-scale = Vector2(1.6, 1.6)
-texture = ExtResource("2_p4h1s")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.5882353)
+position = Vector2(2, 2)
+scale = Vector2(1, 0.5)
+skew = 0.17453292
 texture = ExtResource("1_shgc1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_otqn7")
+autoplay = "default"
+frame_progress = 0.42542592
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_mcba3")
 
+[node name="Explosion" parent="." instance=ExtResource("4_we0th")]
+visible = false
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

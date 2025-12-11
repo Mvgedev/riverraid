@@ -2,12 +2,15 @@ extends Enemy
 
 @onready var sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow: Sprite2D = $Shadow
+@onready var explosion: AnimatedSprite2D = $Explosion
+@onready var collision_shape_2d: CollisionShape2D = $Killzone/CollisionShape2D
 
 @onready var rc_left: RayCast2D = $RCLeft
 @onready var rc_right: RayCast2D = $RCRight
 
 var direction = 1
 var helicopter_speed = 75
+var crash = false
 
 func _process(delta: float) -> void:
 	if rc_left.is_colliding():
@@ -18,4 +21,14 @@ func _process(delta: float) -> void:
 		direction = -1
 		sprite_2d.flip_h = false
 		shadow.flip_h = false
-	position.x += direction * helicopter_speed * delta
+	if crash == false:
+		position.x += direction * helicopter_speed * delta
+
+func explode():
+	crash = true
+	explosion.visible = true
+	explosion.play("default")
+	collision_shape_2d.set_deferred("disabled", true)
+
+func _on_explosion_animation_finished() -> void:
+	queue_free()

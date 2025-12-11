@@ -93,14 +93,14 @@ collision_mask = 128
 shape = SubResource("SegmentShape2D_mauty")
 
 [node name="LeftJetExit" type="Area2D" parent="Level Limit"]
-position = Vector2(-44, 0)
+position = Vector2(-62, 2)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/LeftJetExit"]
 shape = SubResource("SegmentShape2D_d7yel")
 
 [node name="RightJetExit" type="Area2D" parent="Level Limit"]
-position = Vector2(314, 0)
+position = Vector2(330, 0)
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level Limit/RightJetExit"]

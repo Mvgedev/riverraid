@@ -1,10 +1,14 @@
-[gd_scene load_steps=10 format=4 uid="uid://2j80wldvbxr6"]
+[gd_scene load_steps=14 format=4 uid="uid://2j80wldvbxr6"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_y6hgu"]
 [ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_s7any"]
 [ext_resource type="Texture2D" uid="uid://bkddm1fg3871l" path="res://assets/sprites/Levels/Water Tile 1.png" id="3_hoawo"]
 [ext_resource type="Texture2D" uid="uid://dy6cmsgrdqvdu" path="res://assets/sprites/Levels/Layouts/Layout 3.png" id="4_mx2pn"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/obstacles.tscn" id="5_s7any"]
+[ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/boat.tscn" id="6_whbq3"]
+[ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/helicopter.tscn" id="7_wgori"]
+[ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/jetfighter.tscn" id="8_pcnao"]
+[ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/fuel_depot.tscn" id="9_wgori"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_whbq3"]
 shader = ExtResource("2_s7any")
@@ -51,7 +55,25 @@ polygon = PackedVector2Array(263, 0, 270, 0, 270, 608, 263, 608, 263, 583, 262, 
 
 [node name="EnemySpawns" type="Node" parent="."]
 
+[node name="Boat" parent="EnemySpawns" instance=ExtResource("6_whbq3")]
+position = Vector2(234, 35)
+
+[node name="Boat2" parent="EnemySpawns" instance=ExtResource("6_whbq3")]
+position = Vector2(49, 235)
+
+[node name="Helicopter" parent="EnemySpawns" instance=ExtResource("7_wgori")]
+position = Vector2(236, 595)
+
+[node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("8_pcnao")]
+position = Vector2(-15, 290)
+
+[node name="Jet Fighter2" parent="EnemySpawns" instance=ExtResource("8_pcnao")]
+position = Vector2(287, 117)
+
 [node name="FuelSpawns" type="Node" parent="."]
+
+[node name="Fuel Depot" parent="FuelSpawns" instance=ExtResource("9_wgori")]
+position = Vector2(71, 361)
 
 [node name="SupplySpawns" type="Node" parent="."]
 

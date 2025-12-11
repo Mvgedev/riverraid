@@ -1,22 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://5fr14ke0vyda"]
+[gd_scene load_steps=11 format=3 uid="uid://5fr14ke0vyda"]
 
 [ext_resource type="Script" uid="uid://bh20jqpfovdo4" path="res://scripts/entities/helicopter.gd" id="1_nec5y"]
 [ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/killzone.tscn" id="3_gqhe6"]
-[ext_resource type="Texture2D" uid="uid://cemvewvr6x20m" path="res://assets/sprites/Entities/Helicopter2-Sheet.png" id="4_3cntc"]
+[ext_resource type="Texture2D" uid="uid://din67ad7y0c5d" path="res://assets/sprites/Entities/Helicopter2-Sheet.png" id="4_3cntc"]
+[ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/explosion.tscn" id="4_4wkkf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wkkf"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqhe6"]
 atlas = ExtResource("4_3cntc")
 region = Rect2(0, 0, 42, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6rst"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cntc"]
 atlas = ExtResource("4_3cntc")
 region = Rect2(42, 0, 42, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_46pfa"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wkkf"]
 atlas = ExtResource("4_3cntc")
 region = Rect2(84, 0, 42, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_02od8"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6rst"]
 atlas = ExtResource("4_3cntc")
 region = Rect2(126, 0, 42, 24)
 
@@ -24,20 +25,20 @@ region = Rect2(126, 0, 42, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gqhe6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cntc")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4wkkf")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f6rst")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_46pfa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_02od8")
 }],
 "loop": true,
 "name": &"default",
-"speed": 20.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gqhe6"]
@@ -60,7 +61,6 @@ region_rect = Rect2(0, 0, 42, 24)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_j5y2l")
 autoplay = "default"
-frame_progress = 0.7293718
 
 [node name="Killzone" parent="." instance=ExtResource("3_gqhe6")]
 collision_layer = 4
@@ -80,3 +80,8 @@ collide_with_bodies = false
 target_position = Vector2(22, 0)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="Explosion" parent="." instance=ExtResource("4_4wkkf")]
+visible = false
+
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

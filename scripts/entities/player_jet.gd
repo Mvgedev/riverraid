@@ -1,8 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
-@onready var left_cannon: Area2D = $"Left Cannon"
-@onready var right_cannon: Area2D = $"Right Cannon"
+@onready var cannon: Area2D = $"Cannon"
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @onready var bullet = preload("res://scenes/entities/bullet.tscn")
 @onready var bullets: Node = $Bullets
@@ -16,11 +16,12 @@ var cd_time = 0.5
 # Vertical speed
 const accel_modifier = 3
 var acceleration = 75
+var slow_cap = 80
 var min_accel = 45
 var max_accel = 150
 # Horizontal speed and accel/brake
 const LATERAL_SPEED = 200.0
-var lat_accel = 1600.0
+var lat_accel = 800.0
 var lat_brake = 1200.0
 
 var cur_direction = 0
@@ -28,7 +29,7 @@ var cur_direction = 0
 # Fuel management
 var max_fuel = 100
 var cur_fuel = 100
-var base_fuel_rate = 1
+var base_fuel_rate = 2
 var base_refill = 30
 var on_depot = false
 
@@ -72,6 +73,12 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, lat_brake * delta)
 	move_and_slide()
 	
+	# Speed animation
+	if acceleration > slow_cap:
+			sprite_2d.animation = "fast"
+	else:
+		sprite_2d.animation = "slow"
+	
 	#Fuel management
 	if on_depot == false:
 		var speed_factor = acceleration / max_accel
@@ -105,12 +112,9 @@ func hurt(value := 1):
 
 func shoot():
 	if cur_ammo > 0:
-		var left_missile = bullet.instantiate()
-		var right_missile = bullet.instantiate()
-		left_missile.global_position = left_cannon.global_position
-		right_missile.global_position = right_cannon.global_position
-		bullets.add_child(left_missile)
-		bullets.add_child(right_missile)
+		var missile = bullet.instantiate()
+		missile.global_position = cannon.global_position
+		bullets.add_child(missile)
 		cannon_cooldown.start(cd_time)
 		cur_ammo -= 1
 		emit_signal("ammo_update", cur_ammo)

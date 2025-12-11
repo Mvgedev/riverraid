@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://din67ad7y0c5d"
-path="res://.godot/imported/Helicopter2-Sheet.png-0b28de6e11cb24828cde989a27d6b4ab.ctex"
+uid="uid://o5pbtiwrdewu"
+path="res://.godot/imported/Ammo depot-Sheet.png-22a1228870aac8bcc3e600e23ddb5c99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Entities/Helicopter2-Sheet.png"
-dest_files=["res://.godot/imported/Helicopter2-Sheet.png-0b28de6e11cb24828cde989a27d6b4ab.ctex"]
+source_file="res://assets/sprites/Entities/Ammo depot-Sheet.png"
+dest_files=["res://.godot/imported/Ammo depot-Sheet.png-22a1228870aac8bcc3e600e23ddb5c99.ctex"]
 
 [params]
 

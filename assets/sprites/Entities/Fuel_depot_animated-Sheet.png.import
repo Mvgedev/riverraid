@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://din67ad7y0c5d"
-path="res://.godot/imported/Helicopter2-Sheet.png-0b28de6e11cb24828cde989a27d6b4ab.ctex"
+uid="uid://d2g6yq2s3cpql"
+path="res://.godot/imported/Fuel_depot_animated-Sheet.png-aacbe222d0225c29f510ce5725156c5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Entities/Helicopter2-Sheet.png"
-dest_files=["res://.godot/imported/Helicopter2-Sheet.png-0b28de6e11cb24828cde989a27d6b4ab.ctex"]
+source_file="res://assets/sprites/Entities/Fuel_depot_animated-Sheet.png"
+dest_files=["res://.godot/imported/Fuel_depot_animated-Sheet.png-aacbe222d0225c29f510ce5725156c5d.ctex"]
 
 [params]
 

@@ -1,10 +1,81 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwpwgqius8x6h"]
+[gd_scene load_steps=18 format=3 uid="uid://cwpwgqius8x6h"]
 
 [ext_resource type="Script" uid="uid://gdg0b41qx3w6" path="res://scripts/entities/player_jet.gd" id="1_eto2g"]
 [ext_resource type="Texture2D" uid="uid://bqa58hejmrxpw" path="res://assets/sprites/Entities/PlayerJet.png" id="1_u71h6"]
+[ext_resource type="Texture2D" uid="uid://r6wx7mtf6nwq" path="res://assets/sprites/Entities/PlayerJet-Sheet.png" id="3_ibse8"]
+[ext_resource type="Texture2D" uid="uid://bknsttg6t8g00" path="res://assets/sprites/Entities/PlayerJet-Sheet-Slow.png" id="4_12fuj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12fuj"]
+atlas = ExtResource("3_ibse8")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vppml"]
+atlas = ExtResource("3_ibse8")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b27u2"]
+atlas = ExtResource("3_ibse8")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47gi"]
+atlas = ExtResource("3_ibse8")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_212mn"]
+atlas = ExtResource("4_12fuj")
+region = Rect2(0, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytdqb"]
+atlas = ExtResource("4_12fuj")
+region = Rect2(24, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btw4u"]
+atlas = ExtResource("4_12fuj")
+region = Rect2(48, 0, 24, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32577"]
+atlas = ExtResource("4_12fuj")
+region = Rect2(72, 0, 24, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_212mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12fuj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vppml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b27u2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47gi")
+}],
+"loop": true,
+"name": &"fast",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_212mn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytdqb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btw4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32577")
+}],
+"loop": true,
+"name": &"slow",
+"speed": 10.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u71h6"]
-radius = 4.0
+radius = 3.0
 height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eto2g"]
@@ -17,10 +88,6 @@ radius = 3.0
 radius = 2.0
 height = 8.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ibse8"]
-radius = 2.0
-height = 8.0
-
 [node name="Player Jet" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
@@ -29,39 +96,34 @@ script = ExtResource("1_eto2g")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.5882353)
-position = Vector2(0, 19)
+position = Vector2(0, 6)
 scale = Vector2(1, 0.4)
 texture = ExtResource("1_u71h6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_u71h6")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_212mn")
+animation = &"slow"
+autoplay = "slow"
+frame_progress = 0.7505558
 
 [node name="BodyCollision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_u71h6")
 
 [node name="LeftWingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 4)
+position = Vector2(-6, 3)
 shape = SubResource("CircleShape2D_eto2g")
 
 [node name="RightWingCollision" type="CollisionShape2D" parent="."]
-position = Vector2(7, 4)
+position = Vector2(6, 3)
 shape = SubResource("CircleShape2D_ibse8")
 
-[node name="Left Cannon" type="Area2D" parent="."]
-position = Vector2(-8, 3)
+[node name="Cannon" type="Area2D" parent="."]
+position = Vector2(0, -8)
 collision_layer = 256
 collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Cannon"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cannon"]
 shape = SubResource("CapsuleShape2D_eto2g")
-
-[node name="Right Cannon" type="Area2D" parent="."]
-position = Vector2(8, 3)
-collision_layer = 256
-collision_mask = 256
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Cannon"]
-shape = SubResource("CapsuleShape2D_ibse8")
 
 [node name="Bullets" type="Node" parent="."]
 
