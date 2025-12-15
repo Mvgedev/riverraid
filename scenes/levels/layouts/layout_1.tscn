@@ -1,0 +1,92 @@
+[gd_scene load_steps=15 format=4 uid="uid://cafxcs6vj6mva"]
+
+[ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_ec20c"]
+[ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_tro2c"]
+[ext_resource type="Texture2D" uid="uid://bkddm1fg3871l" path="res://assets/sprites/Levels/Textures/Water Tile 1.png" id="3_iqvd0"]
+[ext_resource type="Texture2D" uid="uid://dssi26qyeephn" path="res://assets/sprites/Levels/Layouts/Layout 1.png" id="4_iqvd0"]
+[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/elements/obstacles.tscn" id="5_xdyyl"]
+[ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/enemy/helicopter.tscn" id="6_1ppgu"]
+[ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/enemy/boat.tscn" id="7_0o70v"]
+[ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/enemy/jetfighter.tscn" id="8_0o70v"]
+[ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/bonus/fuel_depot.tscn" id="8_33ahl"]
+[ext_resource type="PackedScene" uid="uid://brycg6dfshpwg" path="res://scenes/entities/bonus/ammo_depot.tscn" id="9_1jflf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdyyl"]
+shader = ExtResource("2_tro2c")
+shader_parameter/wave_speed = 5.50000026125
+shader_parameter/wave_strength = 5.0000002375
+shader_parameter/wave_frequency = 20.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnoqg"]
+texture = ExtResource("3_iqvd0")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pwaei"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_hnoqg")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_xdyyl"]
+b = Vector2(270, 0)
+
+[node name="Layout_1" type="Node2D"]
+script = ExtResource("1_ec20c")
+metadata/_custom_type_script = "uid://cknvxfrutjwkb"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_xdyyl")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAADAAsAAAAAAAAAAAACAAsAAAAAAAAAAAABAAsAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAABAAwAAAAAAAAAAAACAAwAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAADAA0AAAAAAAAAAAACAA0AAAAAAAAAAAABAA0AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAAABEAAAAAAAAAAAABABEAAAAAAAAAAAACABEAAAAAAAAAAAADABEAAAAAAAAAAAAEABEAAAAAAAAAAAAFABEAAAAAAAAAAAAGABEAAAAAAAAAAAAHABEAAAAAAAAAAAAIABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_pwaei")
+
+[node name="Layout" type="Sprite2D" parent="."]
+texture = ExtResource("4_iqvd0")
+centered = false
+
+[node name="Borders" type="Node" parent="."]
+
+[node name="Border Left" parent="Borders" instance=ExtResource("5_xdyyl")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Border Left"]
+polygon = PackedVector2Array(7, 0, 7, 416, 11, 429, 13, 431, 25, 434, 79, 437, 88, 441, 92, 453, 92, 539, 88, 550, 81, 554, 34, 559, 18, 563, 16, 565, 12, 572, 10, 582, 7, 594, 7, 608, 0, 608, 0, 0)
+
+[node name="Border Right" parent="Borders" instance=ExtResource("5_xdyyl")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Border Right"]
+polygon = PackedVector2Array(270, 0, 263, 0, 263, 417, 258, 431, 249, 435, 237, 436, 197, 437, 184, 440, 181, 443, 178, 454, 178, 540, 183, 552, 189, 555, 223, 557, 254, 564, 260, 578, 262, 594, 263, 608, 270, 608)
+
+[node name="Middle Island" parent="Borders" instance=ExtResource("5_xdyyl")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Middle Island"]
+polygon = PackedVector2Array(96, 166, 174, 166, 184, 170, 189, 181, 189, 341, 185, 351, 174, 356, 96, 356, 86, 352, 81, 341, 81, 181, 85, 171)
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="Helicopter" parent="EnemySpawns" instance=ExtResource("6_1ppgu")]
+position = Vector2(239, 85)
+
+[node name="Boat" parent="EnemySpawns" instance=ExtResource("7_0o70v")]
+position = Vector2(56, 259)
+
+[node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("8_0o70v")]
+position = Vector2(289, 201)
+direction = -1
+
+[node name="Boat2" parent="EnemySpawns" instance=ExtResource("7_0o70v")]
+position = Vector2(135, 29)
+
+[node name="FuelSpawns" type="Node" parent="."]
+
+[node name="Fuel Depot" parent="FuelSpawns" instance=ExtResource("8_33ahl")]
+position = Vector2(46, 364)
+
+[node name="SupplySpawns" type="Node" parent="."]
+
+[node name="Ammo Depot" parent="SupplySpawns" instance=ExtResource("9_1jflf")]
+position = Vector2(217, 301)
+
+[node name="Reset" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
+shape = SubResource("SegmentShape2D_xdyyl")

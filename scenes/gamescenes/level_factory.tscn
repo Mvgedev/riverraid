@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://egbwpmbt7acm"]
+
+[ext_resource type="Script" uid="uid://snchxtjn6j13" path="res://scripts/gamescenes/level_factory.gd" id="1_ce03h"]
+
+[node name="Level_Factory" type="Node"]
+script = ExtResource("1_ce03h")

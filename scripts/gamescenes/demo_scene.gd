@@ -6,14 +6,16 @@ extends Node2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var levels: Node = $Levels
+@onready var level_number: Label = $"CanvasLayer/Level Number"
+var current_level = 0
 
-const GATE_LEVEL = preload("res://scenes/levels/gate_level.tscn")
-const SAMPLE_1 = preload("res://scenes/levels/layout_1.tscn")
-const SAMPLE_2 = preload("res://scenes/levels/layout_2.tscn")
-const SAMPLE_3 = preload("res://scenes/levels/layout_3.tscn")
-const SAMPLE_4 = preload("res://scenes/levels/layout_4.tscn")
-const SAMPLE_5 = preload("res://scenes/levels/layout_5.tscn")
-const SAMPLE_6 = preload("res://scenes/levels/layout_6.tscn")
+const GATE_LEVEL = preload("res://scenes/levels/layouts/gate_level.tscn")
+const SAMPLE_1 = preload("res://scenes/levels/layouts/layout_1.tscn")
+const SAMPLE_2 = preload("res://scenes/levels/layouts/layout_2.tscn")
+const SAMPLE_3 = preload("res://scenes/levels/layouts/layout_3.tscn")
+const SAMPLE_4 = preload("res://scenes/levels/layouts/layout_4.tscn")
+const SAMPLE_5 = preload("res://scenes/levels/layouts/layout_5.tscn")
+const SAMPLE_6 = preload("res://scenes/levels/layouts/layout_6.tscn")
 const chunk_size = 607 # Magic number for level size
 
 func _ready() -> void:
@@ -68,15 +70,19 @@ func generate_next_chunk(val := -1):
 		var posy = levels.get_child(levels.get_child_count() - 1).position.y - chunk_size
 		chunk.position.y = posy
 	levels.add_child(chunk)
+	if id == 6:
+		for child in chunk.borders.get_children():
+			if child is Gate:
+				child.connect("next_level", next_level)
 	populate_next_chunk(chunk)
 	
 
 func populate_next_chunk(chunk: Level):
-	var max_count = 2
+	var max_enemy = 2 + current_level
 	var current = 0
-	while current < max_count:
+	while current < max_enemy:
 		if chunk.enemy_spawns.get_child_count() < 1:
-			current = max_count 
+			current = max_enemy 
 		else:
 			var enemies_copy = chunk.enemy_spawns.get_children().duplicate()
 			for enemy in enemies_copy:
@@ -98,6 +104,11 @@ func update_health(val):
 func game_over():
 	print("Game over")
 	pass
+
+func next_level():
+	current_level += 1
+	level_number.text = "Level: " + str(current_level)
+	animation_player.play("Next Level")
 
 func update_ammo(val):
 	print("Cur ammo: ", val)

@@ -1,0 +1,116 @@
+[gd_scene load_steps=16 format=3 uid="uid://fmlpdt63ao1w"]
+
+[ext_resource type="Script" uid="uid://d0dfky0fcubdi" path="res://scripts/entities/jetfighter.gd" id="1_e4skp"]
+[ext_resource type="Texture2D" uid="uid://ussy5kvji7b5" path="res://assets/sprites/Entities/Enemies/JetFighter-Sheet.png" id="2_b7i8b"]
+[ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/enemy/killzone.tscn" id="3_hqc6v"]
+[ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/effects/explosion.tscn" id="4_jwpm3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw5vw"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(0, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x316x"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(42, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48mlu"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(84, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jiko1"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(126, 0, 42, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_50tso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw5vw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x316x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48mlu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jiko1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge1kf"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(0, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lacb4"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(42, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bu3sb"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(84, 0, 42, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6fhs"]
+atlas = ExtResource("2_b7i8b")
+region = Rect2(126, 0, 42, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x316x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge1kf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lacb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bu3sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6fhs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xvqkj"]
+radius = 2.0
+height = 26.0
+
+[node name="Jet Fighter" type="Node2D"]
+script = ExtResource("1_e4skp")
+score_value = 50
+metadata/_custom_type_script = "uid://b0j2k7hyrnky7"
+
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.5882353)
+z_index = 3
+position = Vector2(0, 13)
+scale = Vector2(1, 0.4)
+sprite_frames = SubResource("SpriteFrames_50tso")
+autoplay = "default"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(2, 0)
+sprite_frames = SubResource("SpriteFrames_x316x")
+autoplay = "default"
+frame_progress = 0.06942121
+
+[node name="Killzone" parent="." instance=ExtResource("3_hqc6v")]
+collision_layer = 4
+collision_mask = 131
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-3, 2)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_xvqkj")
+
+[node name="Explosion" parent="." instance=ExtResource("4_jwpm3")]
+visible = false
+
+[connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

@@ -1,4 +1,5 @@
 extends Area2D
+class_name Gate
 
 @onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -6,6 +7,8 @@ extends Area2D
 @onready var explosions: Node2D = $Explosions
 
 @export var score_value = 500
+
+signal next_level()
 
 var crashed = false
 
@@ -26,6 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 		crashed = true
 
 func explode():
+	emit_signal("next_level")
 	for child in explosions.get_children():
 		child.visible = true
 		child.play("default")

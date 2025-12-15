@@ -1,15 +1,15 @@
 [gd_scene load_steps=11 format=3 uid="uid://nnlswhqy5y5g"]
 
 [ext_resource type="Script" uid="uid://ceobwuskrowcp" path="res://scripts/gui/bottom_ui.gd" id="1_2oaib"]
-[ext_resource type="Texture2D" uid="uid://d57lkapxc3l8" path="res://assets/sprites/UI/UI_BottomBar.png" id="1_7ld1u"]
+[ext_resource type="Texture2D" uid="uid://d57lkapxc3l8" path="res://assets/sprites/UI/Bottom GUI/UI_BottomBar.png" id="1_7ld1u"]
 [ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="3_obt63"]
-[ext_resource type="Texture2D" uid="uid://bg4073o1i5ykt" path="res://assets/sprites/UI/Structure Empty.png" id="4_5ffdf"]
-[ext_resource type="Texture2D" uid="uid://ecco26e7bhv0" path="res://assets/sprites/UI/Structure Full.png" id="5_gcwx4"]
-[ext_resource type="Texture2D" uid="uid://bhq7w0q2hkhla" path="res://assets/sprites/UI/Fuel_empty2.png" id="6_x4uaq"]
-[ext_resource type="Texture2D" uid="uid://de7s4lod1a817" path="res://assets/sprites/UI/Fuel_overlay.png" id="7_n7mx3"]
-[ext_resource type="Texture2D" uid="uid://cm43le3sqfydj" path="res://assets/sprites/UI/Fuel_progress.png" id="8_v4yiv"]
-[ext_resource type="Texture2D" uid="uid://b7fqf2od0ibub" path="res://assets/sprites/UI/Ammo_bg.png" id="9_x4uaq"]
-[ext_resource type="Texture2D" uid="uid://y1cjc45noy4n" path="res://assets/sprites/UI/Ammo_progress.png" id="10_n7mx3"]
+[ext_resource type="Texture2D" uid="uid://bg4073o1i5ykt" path="res://assets/sprites/UI/Bottom GUI/Structure/Structure Empty.png" id="4_5ffdf"]
+[ext_resource type="Texture2D" uid="uid://ecco26e7bhv0" path="res://assets/sprites/UI/Bottom GUI/Structure/Structure Full.png" id="5_gcwx4"]
+[ext_resource type="Texture2D" uid="uid://bhq7w0q2hkhla" path="res://assets/sprites/UI/Bottom GUI/Fuel/Fuel_empty2.png" id="6_x4uaq"]
+[ext_resource type="Texture2D" uid="uid://de7s4lod1a817" path="res://assets/sprites/UI/Bottom GUI/Fuel/Fuel_overlay.png" id="7_n7mx3"]
+[ext_resource type="Texture2D" uid="uid://cm43le3sqfydj" path="res://assets/sprites/UI/Bottom GUI/Fuel/Fuel_progress.png" id="8_v4yiv"]
+[ext_resource type="Texture2D" uid="uid://b7fqf2od0ibub" path="res://assets/sprites/UI/Bottom GUI/Ammos/Ammo_bg.png" id="9_x4uaq"]
+[ext_resource type="Texture2D" uid="uid://y1cjc45noy4n" path="res://assets/sprites/UI/Bottom GUI/Ammos/Ammo_progress.png" id="10_n7mx3"]
 
 [node name="Bottom UI" type="Control"]
 layout_mode = 3

@@ -8,7 +8,6 @@ class_name Level
 @onready var fuel_spawns: Node = $FuelSpawns
 @onready var supply_spawns: Node = $SupplySpawns
 
-
 func _ready() -> void:
 	define_y(position.y)
 	

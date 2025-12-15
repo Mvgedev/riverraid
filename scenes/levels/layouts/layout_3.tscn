@@ -1,0 +1,85 @@
+[gd_scene load_steps=14 format=4 uid="uid://2j80wldvbxr6"]
+
+[ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_y6hgu"]
+[ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_s7any"]
+[ext_resource type="Texture2D" uid="uid://bkddm1fg3871l" path="res://assets/sprites/Levels/Textures/Water Tile 1.png" id="3_hoawo"]
+[ext_resource type="Texture2D" uid="uid://dy6cmsgrdqvdu" path="res://assets/sprites/Levels/Layouts/Layout 3.png" id="4_mx2pn"]
+[ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/elements/obstacles.tscn" id="5_s7any"]
+[ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/enemy/boat.tscn" id="6_whbq3"]
+[ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/enemy/helicopter.tscn" id="7_wgori"]
+[ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/enemy/jetfighter.tscn" id="8_pcnao"]
+[ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/bonus/fuel_depot.tscn" id="9_wgori"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whbq3"]
+shader = ExtResource("2_s7any")
+shader_parameter/wave_speed = 5.50000026125
+shader_parameter/wave_strength = 5.0000002375
+shader_parameter/wave_frequency = 20.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hoawo"]
+texture = ExtResource("3_hoawo")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pcnao"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_hoawo")
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_s7any"]
+b = Vector2(270, 0)
+
+[node name="Layout_3" type="Node2D"]
+script = ExtResource("1_y6hgu")
+metadata/_custom_type_script = "uid://cknvxfrutjwkb"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+material = SubResource("ShaderMaterial_whbq3")
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAADAAUAAAAAAAAAAAACAAUAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAIAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAADAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAcAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAIAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAADAAkAAAAAAAAAAAACAAkAAAAAAAAAAAABAAkAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAIAAsAAAAAAAAAAAAHAAsAAAAAAAAAAAAGAAsAAAAAAAAAAAAFAAsAAAAAAAAAAAAEAAsAAAAAAAAAAAADAAsAAAAAAAAAAAACAAsAAAAAAAAAAAABAAsAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAABAAwAAAAAAAAAAAACAAwAAAAAAAAAAAADAAwAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAAAAAAAAAAGAAwAAAAAAAAAAAAHAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAIAA0AAAAAAAAAAAAHAA0AAAAAAAAAAAAGAA0AAAAAAAAAAAAFAA0AAAAAAAAAAAAEAA0AAAAAAAAAAAADAA0AAAAAAAAAAAACAA0AAAAAAAAAAAABAA0AAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAABAA4AAAAAAAAAAAACAA4AAAAAAAAAAAADAA4AAAAAAAAAAAAEAA4AAAAAAAAAAAAFAA4AAAAAAAAAAAAGAA4AAAAAAAAAAAAHAA4AAAAAAAAAAAAIAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAABAA8AAAAAAAAAAAACAA8AAAAAAAAAAAADAA8AAAAAAAAAAAAEAA8AAAAAAAAAAAAFAA8AAAAAAAAAAAAGAA8AAAAAAAAAAAAHAA8AAAAAAAAAAAAIAA8AAAAAAAAAAAAAABAAAAAAAAAAAAABABAAAAAAAAAAAAACABAAAAAAAAAAAAADABAAAAAAAAAAAAAEABAAAAAAAAAAAAAFABAAAAAAAAAAAAAGABAAAAAAAAAAAAAHABAAAAAAAAAAAAAIABAAAAAAAAAAAAAAABEAAAAAAAAAAAABABEAAAAAAAAAAAACABEAAAAAAAAAAAADABEAAAAAAAAAAAAEABEAAAAAAAAAAAAFABEAAAAAAAAAAAAGABEAAAAAAAAAAAAHABEAAAAAAAAAAAAIABEAAAAAAAAAAAAAABIAAAAAAAAAAAABABIAAAAAAAAAAAACABIAAAAAAAAAAAADABIAAAAAAAAAAAAEABIAAAAAAAAAAAAFABIAAAAAAAAAAAAGABIAAAAAAAAAAAAHABIAAAAAAAAAAAAIABIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_pcnao")
+
+[node name="Layout" type="Sprite2D" parent="."]
+texture = ExtResource("4_mx2pn")
+centered = false
+
+[node name="Borders" type="Node" parent="."]
+
+[node name="Left Border" parent="Borders" instance=ExtResource("5_s7any")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Left Border"]
+polygon = PackedVector2Array(7, 0, 8, 13, 8, 41, 7, 51, 8, 68, 9, 84, 10, 111, 12, 142, 14, 167, 15, 185, 19, 219, 20, 229, 22, 241, 24, 246, 26, 248, 30, 250, 38, 252, 83, 259, 134, 262, 173, 268, 177, 271, 180, 277, 181, 292, 180, 307, 177, 313, 170, 317, 134, 322, 83, 325, 45, 332, 41, 334, 39, 336, 37, 340, 34, 356, 29, 408, 26, 445, 25, 456, 27, 484, 29, 494, 32, 498, 40, 501, 53, 502, 116, 506, 132, 510, 135, 513, 137, 518, 137, 522, 139, 539, 137, 557, 135, 566, 132, 569, 117, 573, 51, 577, 33, 578, 20, 580, 13, 583, 11, 586, 8, 597, 7, 608, 0, 608, 0, 0)
+
+[node name="Right Border" parent="Borders" instance=ExtResource("5_s7any")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Right Border"]
+polygon = PackedVector2Array(263, 0, 270, 0, 270, 608, 263, 608, 263, 583, 262, 565, 261, 553, 260, 540, 259, 527, 257, 510, 255, 495, 253, 481, 251, 472, 249, 469, 247, 467, 245, 466, 240, 464, 228, 462, 192, 457, 160, 454, 145, 452, 138, 450, 135, 448, 133, 446, 131, 441, 130, 433, 129, 425, 130, 416, 131, 409, 133, 404, 136, 401, 143, 399, 152, 397, 159, 396, 168, 395, 188, 393, 208, 391, 228, 389, 236, 388, 244, 386, 247, 384, 249, 382, 251, 379, 253, 370, 255, 350, 258, 335, 259, 318, 262, 274, 260, 236, 257, 207, 255, 190, 252, 174, 250, 167, 246, 163, 235, 160, 217, 158, 192, 154, 159, 151, 138, 147, 133, 143, 132, 139, 131, 136, 129, 122, 131, 108, 133, 101, 136, 98, 147, 95, 159, 93, 178, 91, 198, 89, 229, 86, 245, 84, 252, 81, 254, 79, 256, 75, 258, 67, 260, 48, 262, 21, 263, 8)
+
+[node name="EnemySpawns" type="Node" parent="."]
+
+[node name="Boat" parent="EnemySpawns" instance=ExtResource("6_whbq3")]
+position = Vector2(234, 35)
+
+[node name="Boat2" parent="EnemySpawns" instance=ExtResource("6_whbq3")]
+position = Vector2(49, 235)
+
+[node name="Helicopter" parent="EnemySpawns" instance=ExtResource("7_wgori")]
+position = Vector2(236, 595)
+
+[node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("8_pcnao")]
+position = Vector2(-15, 290)
+
+[node name="Jet Fighter2" parent="EnemySpawns" instance=ExtResource("8_pcnao")]
+position = Vector2(287, 117)
+
+[node name="FuelSpawns" type="Node" parent="."]
+
+[node name="Fuel Depot" parent="FuelSpawns" instance=ExtResource("9_wgori")]
+position = Vector2(71, 361)
+
+[node name="SupplySpawns" type="Node" parent="."]
+
+[node name="Reset" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Reset"]
+shape = SubResource("SegmentShape2D_s7any")

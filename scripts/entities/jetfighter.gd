@@ -2,7 +2,7 @@ extends Enemy
 class_name JetFighter
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var shadow: Sprite2D = $Shadow
+@onready var shadow: AnimatedSprite2D = $Shadow
 @onready var explosion: AnimatedSprite2D = $Explosion
 @onready var collision_shape_2d: CollisionShape2D = $Killzone/CollisionShape2D
 
@@ -35,4 +35,4 @@ func explode():
 
 
 func _on_explosion_animation_finished() -> void:
-	pass # Replace with function body.
+	queue_free()

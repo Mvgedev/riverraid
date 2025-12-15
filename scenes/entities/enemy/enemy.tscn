@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cflldnt4py2x2"]
+
+[ext_resource type="Script" uid="uid://b0j2k7hyrnky7" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
+[ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/enemy/killzone.tscn" id="2_67neu"]
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_d7j71")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Killzone" parent="." instance=ExtResource("2_67neu")]
+collision_layer = 4
+collision_mask = 131
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
