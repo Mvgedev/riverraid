@@ -89,6 +89,9 @@ position = Vector2(128, 292)
 [node name="Ammo Depot" parent="SupplySpawns" instance=ExtResource("10_rv7a4")]
 position = Vector2(31, 469)
 
+[node name="Ammo Depot2" parent="SupplySpawns" instance=ExtResource("10_rv7a4")]
+position = Vector2(238, 106)
+
 [node name="Reset" type="Area2D" parent="."]
 collision_layer = 16
 collision_mask = 16

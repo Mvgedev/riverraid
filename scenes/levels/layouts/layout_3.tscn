@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://2j80wldvbxr6"]
+[gd_scene load_steps=15 format=4 uid="uid://2j80wldvbxr6"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_y6hgu"]
 [ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_s7any"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/enemy/helicopter.tscn" id="7_wgori"]
 [ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/enemy/jetfighter.tscn" id="8_pcnao"]
 [ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/bonus/fuel_depot.tscn" id="9_wgori"]
+[ext_resource type="PackedScene" uid="uid://brycg6dfshpwg" path="res://scenes/entities/bonus/ammo_depot.tscn" id="10_rega6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_whbq3"]
 shader = ExtResource("2_s7any")
@@ -76,6 +77,9 @@ position = Vector2(287, 117)
 position = Vector2(71, 361)
 
 [node name="SupplySpawns" type="Node" parent="."]
+
+[node name="Ammo Depot" parent="SupplySpawns" instance=ExtResource("10_rega6")]
+position = Vector2(68, 124)
 
 [node name="Reset" type="Area2D" parent="."]
 collision_layer = 16
