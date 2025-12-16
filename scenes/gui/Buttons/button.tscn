@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw2d6siwdbc8o"]
+
+[ext_resource type="Texture2D" uid="uid://cqbsqdiynp8f5" path="res://assets/sprites/UI/Buttons/UI_Button_Normal.png" id="1_2pubr"]
+[ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="1_apn0w"]
+[ext_resource type="Texture2D" uid="uid://dqwq58ggbh8lo" path="res://assets/sprites/UI/Buttons/UI_Button_Pressed.png" id="2_apn0w"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gjtxr"]
+content_margin_left = 6.0
+content_margin_top = 8.0
+content_margin_right = 6.0
+content_margin_bottom = 8.0
+texture = ExtResource("1_2pubr")
+texture_margin_left = 3.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qk688"]
+content_margin_left = 6.0
+content_margin_top = 8.0
+content_margin_right = 6.0
+content_margin_bottom = 8.0
+texture = ExtResource("2_apn0w")
+texture_margin_left = 3.0
+texture_margin_top = 4.0
+texture_margin_right = 3.0
+texture_margin_bottom = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("1_apn0w")
+theme_override_styles/normal = SubResource("StyleBoxTexture_gjtxr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_qk688")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gjtxr")
+text = "BUTTON"

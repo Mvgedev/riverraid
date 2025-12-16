@@ -47,12 +47,12 @@ centered = false
 [node name="Left Border" parent="Borders" instance=ExtResource("5_uoiqn")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Left Border"]
-polygon = PackedVector2Array(7, 0, 7, 47, 9, 70, 7, 97, 9, 130, 7, 184, 7, 234, 9, 326, 10, 395, 11, 424, 9, 480, 7, 539, 7, 608, 0, 608, 0, 0)
+polygon = PackedVector2Array(5, 0, 6, 51, 7, 70, 5, 97, 7, 130, 5, 184, 6, 243, 6, 307, 8, 382, 9, 420, 7, 477, 5, 539, 5, 608, 0, 608, 0, 0)
 
 [node name="Right Border" parent="Borders" instance=ExtResource("5_uoiqn")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Right Border"]
-polygon = PackedVector2Array(270, 0, 263, 0, 263, 54, 262, 105, 263, 153, 262, 225, 261, 284, 260, 342, 259, 386, 260, 432, 261, 461, 263, 527, 263, 608, 270, 608)
+polygon = PackedVector2Array(270, 0, 265, 0, 265, 54, 264, 105, 265, 153, 264, 225, 263, 284, 262, 342, 261, 386, 262, 425, 263, 461, 265, 527, 265, 608, 270, 608)
 
 [node name="EnemySpawns" type="Node" parent="."]
 
@@ -76,7 +76,7 @@ direction = -1
 position = Vector2(-15, 364)
 
 [node name="Boat3" parent="EnemySpawns" instance=ExtResource("6_s0vcn")]
-position = Vector2(45, 411)
+position = Vector2(221, 411)
 
 [node name="Helicopter3" parent="EnemySpawns" instance=ExtResource("7_l4m2w")]
 position = Vector2(236, 476)

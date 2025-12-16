@@ -47,28 +47,28 @@ centered = false
 [node name="Left Border" parent="Borders" instance=ExtResource("5_tg1ir")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Left Border"]
-polygon = PackedVector2Array(7, 0, 7, 50, 9, 71, 7, 97, 9, 130, 8, 154, 7, 209, 8, 277, 9, 337, 10, 382, 11, 423, 10, 453, 9, 478, 8, 503, 7, 537, 7, 608, 0, 608, 0, 0)
+polygon = PackedVector2Array(5, 0, 6, 51, 7, 71, 5, 96, 7, 130, 6, 168, 5, 209, 6, 277, 7, 337, 8, 382, 9, 423, 8, 453, 7, 478, 6, 511, 5, 537, 5, 608, 0, 608, 0, 0)
 
 [node name="Right Border" parent="Borders" instance=ExtResource("5_tg1ir")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Right Border"]
-polygon = PackedVector2Array(270, 0, 263, 0, 263, 50, 262, 109, 263, 181, 262, 229, 261, 281, 260, 337, 259, 383, 260, 426, 261, 461, 262, 496, 263, 543, 263, 608, 270, 608)
+polygon = PackedVector2Array(270, 0, 265, 0, 265, 50, 264, 109, 265, 181, 264, 229, 263, 281, 262, 337, 261, 383, 262, 426, 263, 461, 264, 496, 265, 543, 265, 608, 270, 608)
 
 [node name="Top Island" parent="Borders" instance=ExtResource("5_tg1ir")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Top Island"]
-polygon = PackedVector2Array(122, 20, 113, 23, 110, 26, 107, 35, 107, 68, 110, 77, 113, 80, 122, 83, 149, 83, 158, 80, 161, 77, 164, 68, 164, 35, 161, 26, 158, 23, 149, 20)
+polygon = PackedVector2Array(122, 22, 115, 24, 111, 28, 109, 35, 109, 68, 111, 75, 115, 79, 122, 81, 149, 81, 156, 79, 160, 75, 162, 68, 162, 35, 160, 28, 156, 24, 149, 22)
 
 [node name="Mid Island" parent="Borders" instance=ExtResource("5_tg1ir")]
 position = Vector2(107.392975, 35.052505)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Mid Island"]
-polygon = PackedVector2Array(40.607025, 236.9475, 49.607025, 239.9475, 52.607025, 242.9475, 55.607025, 251.9475, 55.607025, 284.9475, 52.607025, 293.9475, 49.607025, 296.9475, 40.607025, 299.9475, 13.607025, 299.9475, 4.607025, 296.9475, 1.6070251, 293.9475, -1.3929749, 284.9475, -1.3929749, 251.9475, 1.6070251, 242.9475, 4.607025, 239.9475, 13.607025, 236.9475)
+polygon = PackedVector2Array(40.607025, 238.9475, 47.607025, 240.9475, 51.607025, 244.9475, 53.607025, 251.9475, 53.607025, 284.9475, 51.607025, 291.9475, 47.607025, 295.9475, 40.607025, 297.9475, 13.607025, 297.9475, 6.607025, 295.9475, 2.6070251, 291.9475, 0.60702515, 284.9475, 0.60702515, 251.9475, 2.6070251, 244.9475, 6.607025, 240.9475, 13.607025, 238.9475)
 
 [node name="Bot Island" parent="Borders" instance=ExtResource("5_tg1ir")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Bot Island"]
-polygon = PackedVector2Array(148, 508, 157, 511, 160, 514, 163, 523, 163, 556, 160, 565, 157, 568, 148, 571, 121, 571, 112, 568, 109, 565, 106, 556, 106, 523, 109, 514, 112, 511, 121, 508)
+polygon = PackedVector2Array(148, 510, 155, 512, 159, 516, 161, 523, 161, 556, 159, 563, 155, 567, 148, 569, 121, 569, 114, 567, 110, 563, 108, 556, 108, 523, 110, 516, 114, 512, 121, 510)
 
 [node name="EnemySpawns" type="Node" parent="."]
 
@@ -82,7 +82,7 @@ position = Vector2(31, 234)
 position = Vector2(234, 407)
 
 [node name="Boat2" parent="EnemySpawns" instance=ExtResource("6_uvpoe")]
-position = Vector2(41, 464)
+position = Vector2(111, 464)
 
 [node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("8_6pka6")]
 position = Vector2(289, 47)

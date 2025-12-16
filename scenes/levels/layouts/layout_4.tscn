@@ -47,22 +47,22 @@ centered = false
 [node name="Left Border" parent="Borders" instance=ExtResource("5_676bs")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Left Border"]
-polygon = PackedVector2Array(7, 0, 8, 25, 9, 41, 8, 68, 7, 95, 7, 133, 8, 187, 9, 239, 10, 289, 11, 336, 10, 364, 9, 389, 8, 413, 7, 452, 7, 608, 0, 608, 0, 0)
+polygon = PackedVector2Array(5, 0, 6, 24, 7, 41, 6, 66, 5, 95, 5, 133, 6, 177, 7, 239, 8, 289, 9, 336, 8, 364, 7, 387, 6, 411, 5, 452, 5, 608, 0, 608, 0, 0)
 
 [node name="Right Border" parent="Borders" instance=ExtResource("5_676bs")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Right Border"]
-polygon = PackedVector2Array(263, 0, 270, 0, 270, 608, 263, 608, 263, 476, 262, 437, 261, 400, 260, 365, 259, 324, 260, 269, 261, 219, 262, 172, 263, 114, 262, 44, 263, 6)
+polygon = PackedVector2Array(265, 0, 270, 0, 270, 608, 265, 608, 265, 476, 264, 436, 263, 400, 262, 365, 261, 324, 262, 269, 263, 219, 264, 172, 265, 114, 264, 44, 265, 6)
 
 [node name="Mid Bot Island" parent="Borders" instance=ExtResource("5_676bs")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Mid Bot Island"]
-polygon = PackedVector2Array(150, 579, 159, 576, 162, 573, 165, 564, 165, 404, 162, 395, 159, 392, 150, 389, 72, 389, 63, 392, 60, 395, 57, 404, 57, 564, 60, 573, 63, 576, 72, 579)
+polygon = PackedVector2Array(150, 577, 157, 575, 161, 571, 163, 564, 163, 404, 161, 397, 157, 393, 150, 391, 72, 391, 65, 393, 61, 397, 59, 404, 59, 564, 61, 571, 65, 575, 72, 577)
 
 [node name="Mid Top Island" parent="Borders" instance=ExtResource("5_676bs")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Mid Top Island"]
-polygon = PackedVector2Array(199, 20, 208, 23, 211, 26, 214, 35, 214, 195, 211, 204, 208, 207, 199, 210, 121, 210, 112, 207, 109, 204, 106, 195, 106, 35, 109, 26, 112, 23, 121, 20)
+polygon = PackedVector2Array(199, 22, 206, 24, 210, 28, 212, 35, 212, 195, 210, 202, 206, 206, 199, 208, 121, 208, 114, 206, 110, 202, 108, 195, 108, 35, 110, 28, 114, 24, 121, 22)
 
 [node name="EnemySpawns" type="Node" parent="."]
 

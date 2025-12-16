@@ -47,17 +47,17 @@ centered = false
 [node name="Middle Island" parent="Borders" instance=ExtResource("5_cxtf0")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Middle Island"]
-polygon = PackedVector2Array(135, 69, 159, 77, 164, 90, 171, 136, 175, 177, 176, 459, 173, 490, 168, 517, 161, 554, 157, 561, 149, 564, 143, 566, 139, 567, 131, 567, 127, 566, 121, 564, 113, 561, 109, 554, 102, 517, 97, 490, 94, 459, 95, 177, 99, 136, 106, 90, 111, 77)
+polygon = PackedVector2Array(135, 71, 157, 77, 162, 90, 170, 137, 174, 178, 174, 458, 172, 489, 167, 516, 160, 553, 156, 559, 149, 562, 143, 564, 139, 565, 131, 565, 127, 564, 121, 562, 114, 559, 110, 553, 103, 516, 98, 489, 96, 458, 96, 178, 100, 137, 108, 90, 112, 78)
 
 [node name="Left Border" parent="Borders" instance=ExtResource("5_cxtf0")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Left Border"]
-polygon = PackedVector2Array(7, 0, 8, 11, 8, 67, 7, 76, 7, 184, 8, 232, 7, 261, 8, 294, 7, 351, 7, 454, 8, 504, 7, 569, 7, 608, 0, 608, 0, 0)
+polygon = PackedVector2Array(5, 0, 6, 12, 6, 66, 5, 76, 5, 184, 6, 232, 5, 265, 6, 296, 5, 351, 6, 458, 6, 519, 5, 569, 5, 608, 0, 608, 0, 0)
 
 [node name="Right Border" parent="Borders" instance=ExtResource("5_cxtf0")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Right Border"]
-polygon = PackedVector2Array(270, 0, 263, 0, 263, 97, 263, 280, 262, 321, 263, 352, 262, 385, 263, 444, 263, 608, 270, 608)
+polygon = PackedVector2Array(270, 0, 265, 0, 265, 98, 265, 271, 264, 310, 265, 352, 264, 385, 265, 444, 265, 608, 270, 608)
 
 [node name="EnemySpawns" type="Node" parent="."]
 
