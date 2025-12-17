@@ -303,7 +303,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.23333333),
 "transitions": PackedFloat32Array(0.19614607, 0.42044738),
 "update": 0,
-"values": [Vector2(-32.5, -22), Vector2(-32.5, -27)]
+"values": [Vector2(-40, -22), Vector2(-40, -27)]
 }
 
 [sub_resource type="Animation" id="Animation_k2j88"]
@@ -407,17 +407,19 @@ horizontal_alignment = 1
 
 [node name="Ammo" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -32.5
 offset_top = -27.0
-offset_right = 32.5
+offset_right = 47.5
 offset_bottom = -4.0
 grow_horizontal = 2
+pivot_offset = Vector2(40, 0)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("6_k2j88")
-text = "+3 AMMO"
+text = "MAX AMMO"
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -11,6 +11,7 @@ class_name Player
 @onready var bullets: Node = $Bullets
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var ammo: Label = $Ammo
 
 @onready var cannon_cooldown: Timer = $"Cannon Cooldown"
 
@@ -175,6 +176,10 @@ func shoot():
 func ammo_refill():
 	cur_ammo = min(cur_ammo + 3, max_ammo)
 	emit_signal("ammo_update", cur_ammo)
+	if cur_ammo == max_ammo:
+		ammo.text = "MAX AMMO"
+	else:
+		ammo.text = "+3 AMMO"
 	animation_player.play("ammo up")
 
 func _on_cannon_cooldown_timeout() -> void:

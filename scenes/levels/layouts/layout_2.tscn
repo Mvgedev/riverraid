@@ -42,7 +42,7 @@ tile_set = SubResource("TileSet_t5rf4")
 texture = ExtResource("4_wrjn7")
 centered = false
 
-[node name="Borders" type="Node" parent="."]
+[node name="Borders" type="Node2D" parent="."]
 
 [node name="Middle Island" parent="Borders" instance=ExtResource("5_cxtf0")]
 
@@ -59,7 +59,7 @@ polygon = PackedVector2Array(5, 0, 6, 12, 6, 66, 5, 76, 5, 184, 6, 232, 5, 265, 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Borders/Right Border"]
 polygon = PackedVector2Array(270, 0, 265, 0, 265, 98, 265, 271, 264, 310, 265, 352, 264, 385, 265, 444, 265, 608, 270, 608)
 
-[node name="EnemySpawns" type="Node" parent="."]
+[node name="EnemySpawns" type="Node2D" parent="."]
 
 [node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("6_17cun")]
 position = Vector2(287, 235)
@@ -81,7 +81,7 @@ position = Vector2(202, 231)
 [node name="Helicopter2" parent="EnemySpawns" instance=ExtResource("7_0wy2o")]
 position = Vector2(33, 457)
 
-[node name="FuelSpawns" type="Node" parent="."]
+[node name="FuelSpawns" type="Node2D" parent="."]
 
 [node name="Fuel Depot" parent="FuelSpawns" instance=ExtResource("8_t5rf4")]
 position = Vector2(50, 173)
@@ -89,10 +89,16 @@ position = Vector2(50, 173)
 [node name="Fuel Depot2" parent="FuelSpawns" instance=ExtResource("8_t5rf4")]
 position = Vector2(218, 310)
 
-[node name="SupplySpawns" type="Node" parent="."]
+[node name="SupplySpawns" type="Node2D" parent="."]
 
 [node name="Ammo Depot" parent="SupplySpawns" instance=ExtResource("9_r4pln")]
-position = Vector2(136, 586)
+position = Vector2(136, 591)
+
+[node name="Ammo Depot2" parent="SupplySpawns" instance=ExtResource("9_r4pln")]
+position = Vector2(221, 86)
+
+[node name="Ammo Depot3" parent="SupplySpawns" instance=ExtResource("9_r4pln")]
+position = Vector2(49, 288)
 
 [node name="Reset" type="Area2D" parent="."]
 collision_layer = 16

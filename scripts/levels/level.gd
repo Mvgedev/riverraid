@@ -2,15 +2,15 @@ extends Node2D
 
 class_name Level
 
-@onready var borders: Node = $Borders
+@onready var borders: Node2D = $Borders
 
-@onready var enemy_spawns: Node = $EnemySpawns
-@onready var fuel_spawns: Node = $FuelSpawns
-@onready var supply_spawns: Node = $SupplySpawns
+@onready var enemy_spawns: Node2D = $EnemySpawns
+@onready var fuel_spawns: Node2D = $FuelSpawns
+@onready var supply_spawns: Node2D = $SupplySpawns
 
 func _ready() -> void:
-	define_y(position.y)
-	
+	#define_y(position.y)
+	pass
 
 func launch_jet():
 	for child in enemy_spawns.get_children():

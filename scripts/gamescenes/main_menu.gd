@@ -9,3 +9,7 @@ func _on_settings_button_pressed() -> void:
 
 func _on_back_button_pressed() -> void:
 	animation_player.play_backwards("To_Settings")
+
+
+func _on_story_button_pressed() -> void:
+	pass # Replace with function body.

@@ -16,31 +16,33 @@ const end_level = 8
 # Base level size, increased with number of level completed
 const level_size = 4
 # Const for maximum number of each spawn location for a LEVEL (multiple layouts)
-const max_enemy = 4
-const max_fuel = 5
-const max_ammo = 6
+const max_enemy = 4 # 6 Enemy Spawns per Layout
+const max_fuel = 6 # 2 Fuel Spawns per Layout
+const max_ammo = 7 # 3 Ammo Spawns per Layout
 # Guideline is to reduce fuel/ammo by 1 each level, until there is only 1 possible fuel and ammo per level
 # For enemies, we want to raise the amount by 1 each level, until we simply reach the critical mass of enemy per layout
 
-func generate_next_level() -> Node:
+func generate_next_level() -> Node2D:
+	var r_level := Node2D.new()
 	# Proper max elements and size
 	var l_size = level_size + current_level
 	var m_enemy = max_enemy + current_level
-	var m_fuel = max_fuel + current_level
-	var m_ammo = max_ammo + current_level
+	var m_fuel = max(1, max_fuel - current_level)
+	var m_ammo = max(2, max_ammo - current_level)
 	# Slots for each layout
-	var level_enemies = []
-	var level_fuel = []
-	var level_ammo = []
-	# Generate for each layout
-	# Generate Level in this loop + Gate_Level
+	var level_enemies := distribute(m_enemy, l_size, 6, 1)
+	var level_fuel := distribute(m_fuel, l_size, 2)
+	var level_ammo := distribute(m_ammo, l_size, 3)
+	# Generate Level in this loop
 	for c in range(l_size):
+		var n_layout = instantiate_layout(define_layout())
+		var r_layout = generate_next_layout(n_layout,level_enemies[c],level_fuel[c],level_ammo[c])
+		r_level.add_child(r_layout)
 		pass
-		
-	# Need to calculate enemies/fuel/ammo number per level
-	# Then dispatch it within layouts
-	# Then generate each layout with appropriate number of enemies/fuel/ammo
-	return null # Must replace with a Node that contains all the levels
+	# Append Gate Layout
+	var gate_layout = instantiate_layout(GATE_LEVEL)
+	r_level.add_child(gate_layout)
+	return r_level
 
 func define_layout(gate := false) -> Resource:
 	var ret = null
@@ -50,10 +52,40 @@ func define_layout(gate := false) -> Resource:
 		ret = LAYOUTS[randi_range(0, LAYOUTS.size() - 1)]
 	return ret
 
-func instantiate_layout(layout) -> Node2D:
+func instantiate_layout(layout) -> Level:
 	var ret = layout.instantiate()
 	return ret
 
 func generate_next_layout(layout, layout_enemies, layout_fuel, layout_ammo) -> Level:
 	var ret = layout
+	clean_spawns(ret.enemy_spawns.get_children(), layout_enemies)
+	clean_spawns(ret.fuel_spawns.get_children(), layout_fuel)
+	clean_spawns(ret.supply_spawns.get_children(), layout_ammo)
 	return ret
+
+func distribute(total: int, parts: int, cap: int, min_part := 0) -> Array:
+	var result := []
+	# Add min_part if any to each element
+	for i in parts:
+		result.append(min_part)
+	# Calculate the remaining total
+	var remaining := total - parts * min_part
+	# While loop to distribute remaining to each part while not overcapping
+	# If all part are capped, remaining will be lost as we break from the while()
+	while remaining > 0:
+		var valid := []
+		for i in parts:
+			if result[i] < cap:
+				valid.append(i)
+		if valid.is_empty():
+			break
+		var idx : int = valid[randi() % valid.size()]
+		result[idx] += 1
+		remaining -= 1
+	return result
+
+func clean_spawns(to_clean, quota):
+	for i in to_clean.size():
+		if i < quota:
+			continue
+		to_clean[i].queue_free()

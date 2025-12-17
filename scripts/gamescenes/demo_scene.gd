@@ -32,7 +32,7 @@ func _ready() -> void:
 	generate_next_chunk(6)
 	# TMP to set 1st chunk post to above UI
 	levels.get_child(0).position.y = -64
-	levels.get_child(0).define_y(-64)
+	#levels.get_child(0).define_y(-64)
 	generate_next_chunk()
 	generate_next_chunk()
 	pass
@@ -40,9 +40,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	for child in levels.get_children():
-		var speed = player_jet.acceleration * delta
+		#var speed = player_jet.acceleration * delta
 		child.position.y += player_jet.acceleration * delta
-		child.scroll_level(speed)
+		#child.scroll_level(speed)
 
 
 func generate_next_chunk(val := -1):

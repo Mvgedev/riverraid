@@ -7,10 +7,10 @@ script = ExtResource("1_377w7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
-[node name="Borders" type="Node" parent="."]
+[node name="Borders" type="Node2D" parent="."]
 
-[node name="EnemySpawns" type="Node" parent="."]
+[node name="EnemySpawns" type="Node2D" parent="."]
 
-[node name="FuelSpawns" type="Node" parent="."]
+[node name="FuelSpawns" type="Node2D" parent="."]
 
-[node name="SupplySpawns" type="Node" parent="."]
+[node name="SupplySpawns" type="Node2D" parent="."]

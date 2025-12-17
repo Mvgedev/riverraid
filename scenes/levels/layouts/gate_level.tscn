@@ -38,7 +38,7 @@ tile_set = SubResource("TileSet_8acql")
 texture = ExtResource("4_o1t3g")
 centered = false
 
-[node name="Borders" type="Node" parent="."]
+[node name="Borders" type="Node2D" parent="."]
 
 [node name="Border Left" parent="Borders" instance=ExtResource("5_ug3u3")]
 
@@ -53,11 +53,11 @@ polygon = PackedVector2Array(263, 0, 263, 6, 261, 8, 256, 11, 244, 13, 215, 14, 
 [node name="Gate" parent="Borders" instance=ExtResource("6_1ymj2")]
 collision_mask = 130
 
-[node name="EnemySpawns" type="Node" parent="."]
+[node name="EnemySpawns" type="Node2D" parent="."]
 
-[node name="FuelSpawns" type="Node" parent="."]
+[node name="FuelSpawns" type="Node2D" parent="."]
 
-[node name="SupplySpawns" type="Node" parent="."]
+[node name="SupplySpawns" type="Node2D" parent="."]
 
 [node name="Reset" type="Area2D" parent="."]
 collision_layer = 16
