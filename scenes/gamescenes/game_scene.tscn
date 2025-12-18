@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://xyalq5v0tsj"]
+[gd_scene load_steps=17 format=3 uid="uid://xyalq5v0tsj"]
 
 [ext_resource type="Script" uid="uid://br05u0mmt2e4r" path="res://scripts/gamescenes/game_scene.gd" id="1_v5t8o"]
 [ext_resource type="PackedScene" uid="uid://cwpwgqius8x6h" path="res://scenes/entities/player/player_jet.tscn" id="2_8w0xn"]
 [ext_resource type="PackedScene" uid="uid://nnlswhqy5y5g" path="res://scenes/gui/bottom_ui.tscn" id="2_mam7v"]
 [ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="3_8w0xn"]
 [ext_resource type="PackedScene" uid="uid://egbwpmbt7acm" path="res://scenes/gamescenes/level_factory.tscn" id="5_oppbp"]
+[ext_resource type="AudioStream" uid="uid://c1q6ymevyrv32" path="res://assets/sfx/no_ammo1.wav" id="6_cfrlv"]
+[ext_resource type="AudioStream" uid="uid://p552gbadwyyf" path="res://assets/sfx/accel.wav" id="7_cfrlv"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_mam7v"]
 
@@ -126,6 +128,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(135, 500), Vector2(135, 200), Vector2(135, 300), Vector2(135, 335)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SFX/Accel")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.25],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5bmdg"]
 _data = {
@@ -232,6 +248,15 @@ vertical_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_5bmdg")
 }
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="no_ammo" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("6_cfrlv")
+bus = &"SFX"
+
+[node name="Accel" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("7_cfrlv")
 
 [connection signal="area_entered" from="Level Limit/LevelRecycler" to="." method="_on_level_recycler_area_entered"]
 [connection signal="area_entered" from="Level Limit/FullLevel Detection" to="." method="_on_full_level_detection_area_entered"]

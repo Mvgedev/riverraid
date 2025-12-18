@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cwpwgqius8x6h"]
+[gd_scene load_steps=45 format=3 uid="uid://cwpwgqius8x6h"]
 
 [ext_resource type="Script" uid="uid://gdg0b41qx3w6" path="res://scripts/entities/player_jet.gd" id="1_eto2g"]
 [ext_resource type="Texture2D" uid="uid://bra7bwvhu257e" path="res://assets/sprites/Entities/Player Jet/player-jet_neutral.png" id="3_12fuj"]
@@ -7,6 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://b6kkk6i5vc2x6" path="res://assets/sprites/Entities/Player Jet/PlayerJet-Tilt-Sheet.png" id="5_vppml"]
 [ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="6_k2j88"]
 [ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/effects/explosion.tscn" id="7_22wlv"]
+[ext_resource type="AudioStream" uid="uid://dajaboywifgpt" path="res://assets/sfx/shoot1.wav" id="8_k6kuv"]
+[ext_resource type="AudioStream" uid="uid://cg1p116gmdyry" path="res://assets/sfx/explosion1.wav" id="9_k6kuv"]
+[ext_resource type="AudioStream" uid="uid://cct1bdm3dkopm" path="res://assets/sfx/pickup_ammo.wav" id="10_k6kuv"]
+[ext_resource type="AudioStream" uid="uid://67lqo6wgjk8h" path="res://assets/sfx/refuel2.wav" id="11_k6kuv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b27u2"]
 atlas = ExtResource("3_12fuj")
@@ -429,6 +433,24 @@ libraries = {
 
 [node name="Explosion" parent="." instance=ExtResource("7_22wlv")]
 visible = false
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="ShootFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("8_k6kuv")
+bus = &"SFX"
+
+[node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("9_k6kuv")
+bus = &"SFX"
+
+[node name="AmmoUPFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("10_k6kuv")
+bus = &"SFX"
+
+[node name="FuelFX" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("11_k6kuv")
+bus = &"SFX"
 
 [connection signal="timeout" from="Cannon Cooldown" to="." method="_on_cannon_cooldown_timeout"]
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cafxcs6vj6mva"]
+[gd_scene load_steps=16 format=4 uid="uid://cafxcs6vj6mva"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_ec20c"]
 [ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_tro2c"]
 [ext_resource type="Texture2D" uid="uid://bkddm1fg3871l" path="res://assets/sprites/Levels/Textures/Water Tile 1.png" id="3_iqvd0"]
 [ext_resource type="Texture2D" uid="uid://dssi26qyeephn" path="res://assets/sprites/Levels/Layouts/Layout 1.png" id="4_iqvd0"]
+[ext_resource type="Texture2D" uid="uid://6hfcs6s8muge" path="res://assets/sprites/Levels/Textures/Tree.png" id="5_hytwn"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/elements/obstacles.tscn" id="5_xdyyl"]
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/enemy/helicopter.tscn" id="6_1ppgu"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/enemy/boat.tscn" id="7_0o70v"]
@@ -42,6 +43,132 @@ tile_set = SubResource("TileSet_pwaei")
 texture = ExtResource("4_iqvd0")
 centered = false
 
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="Tree" type="Sprite2D" parent="Trees"]
+position = Vector2(102, 193)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree2" type="Sprite2D" parent="Trees"]
+position = Vector2(121, 212)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree3" type="Sprite2D" parent="Trees"]
+position = Vector2(148, 187)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree27" type="Sprite2D" parent="Trees"]
+position = Vector2(168, 203)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree4" type="Sprite2D" parent="Trees"]
+position = Vector2(145, 225)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree5" type="Sprite2D" parent="Trees"]
+position = Vector2(165, 251)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree6" type="Sprite2D" parent="Trees"]
+position = Vector2(126, 236)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree7" type="Sprite2D" parent="Trees"]
+position = Vector2(103, 248)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree8" type="Sprite2D" parent="Trees"]
+position = Vector2(117, 276)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree9" type="Sprite2D" parent="Trees"]
+position = Vector2(142, 258)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree10" type="Sprite2D" parent="Trees"]
+position = Vector2(155, 285)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree11" type="Sprite2D" parent="Trees"]
+position = Vector2(133, 299)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree12" type="Sprite2D" parent="Trees"]
+position = Vector2(105, 316)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree13" type="Sprite2D" parent="Trees"]
+position = Vector2(153, 324)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree14" type="Sprite2D" parent="Trees"]
+position = Vector2(25, 455)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree15" type="Sprite2D" parent="Trees"]
+position = Vector2(43, 470)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree16" type="Sprite2D" parent="Trees"]
+position = Vector2(3, 486)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree17" type="Sprite2D" parent="Trees"]
+position = Vector2(23, 511)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree18" type="Sprite2D" parent="Trees"]
+position = Vector2(63, 501)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree19" type="Sprite2D" parent="Trees"]
+position = Vector2(267, 452)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree26" type="Sprite2D" parent="Trees"]
+position = Vector2(239, 458)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree20" type="Sprite2D" parent="Trees"]
+position = Vector2(269, 527)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree21" type="Sprite2D" parent="Trees"]
+position = Vector2(246, 491)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree22" type="Sprite2D" parent="Trees"]
+position = Vector2(201, 466)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree23" type="Sprite2D" parent="Trees"]
+position = Vector2(217, 481)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree24" type="Sprite2D" parent="Trees"]
+position = Vector2(199, 511)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree25" type="Sprite2D" parent="Trees"]
+position = Vector2(235, 527)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree28" type="Sprite2D" parent="Trees"]
+position = Vector2(275, 339)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree29" type="Sprite2D" parent="Trees"]
+position = Vector2(-7, 225)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree30" type="Sprite2D" parent="Trees"]
+position = Vector2(-2, 73)
+texture = ExtResource("5_hytwn")
+
+[node name="Tree31" type="Sprite2D" parent="Trees"]
+position = Vector2(274, 60)
+texture = ExtResource("5_hytwn")
+
 [node name="Borders" type="Node2D" parent="."]
 
 [node name="Border Left" parent="Borders" instance=ExtResource("5_xdyyl")]
@@ -63,6 +190,7 @@ polygon = PackedVector2Array(97, 168, 173, 168, 183, 172, 187, 182, 187, 340, 18
 
 [node name="Helicopter" parent="EnemySpawns" instance=ExtResource("6_1ppgu")]
 position = Vector2(239, 85)
+score_value = 0
 
 [node name="Boat" parent="EnemySpawns" instance=ExtResource("7_0o70v")]
 position = Vector2(56, 259)
@@ -70,15 +198,18 @@ position = Vector2(56, 259)
 [node name="Jet Fighter" parent="EnemySpawns" instance=ExtResource("8_0o70v")]
 position = Vector2(289, 201)
 direction = -1
+score_value = 0
 
 [node name="Boat2" parent="EnemySpawns" instance=ExtResource("7_0o70v")]
 position = Vector2(135, 29)
 
 [node name="Helicopter2" parent="EnemySpawns" instance=ExtResource("6_1ppgu")]
 position = Vector2(216, 400)
+score_value = 0
 
 [node name="Jet Fighter2" parent="EnemySpawns" instance=ExtResource("8_0o70v")]
 position = Vector2(-22, 135)
+score_value = 0
 
 [node name="FuelSpawns" type="Node2D" parent="."]
 

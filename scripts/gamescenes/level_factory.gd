@@ -58,19 +58,12 @@ func generate_next_level(handler):
 	connect_gate(gate_layout)
 
 # Dedicated function to generate the first level of either endless or story mode
-func generate_first_level(handler, story := false):
-	if story:
-		pass
-	else:
-		var gate_layout = instantiate_layout(GATE_LEVEL)
-		var g_posy = BASE_OFFSET
-		gate_layout.position.y = g_posy
-		handler.add_child(gate_layout)
-		connect_gate(gate_layout)
-
-func generate_story_intro(handler):
-	# Generate few LAYOUT_6 to cover the whole intro sequence
-	pass
+func generate_first_level(handler):
+	var gate_layout = instantiate_layout(GATE_LEVEL)
+	var g_posy = BASE_OFFSET
+	gate_layout.position.y = g_posy
+	handler.add_child(gate_layout)
+	connect_gate(gate_layout)
 
 func define_layout(gate := false) -> Resource:
 	var ret = null

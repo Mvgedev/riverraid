@@ -9,6 +9,9 @@ extends Node2D
 @onready var level_number: Label = $"CanvasLayer/Level Number"
 # Animation Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+# Sounds FX
+@onready var no_ammo: AudioStreamPlayer2D = $SFX/no_ammo
+
 # Player 
 @onready var player_jet: Player = $"Player Jet"
 
@@ -83,6 +86,7 @@ func gui_forced_update():
 ## Events
 func out_of_ammo():
 	animation_player.play("out_of_ammo")
+	no_ammo.play()
 func next_level():
 	if player_jet.fuel_cons == false:
 		player_jet.fuel_cons = true

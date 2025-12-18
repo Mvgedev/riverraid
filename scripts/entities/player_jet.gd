@@ -6,6 +6,12 @@ class_name Player
 @onready var shadow: AnimatedSprite2D = $Shadow
 @onready var fire: AnimatedSprite2D = $Fire
 @onready var explosion: AnimatedSprite2D = $Explosion
+# SFX Streams
+@onready var shoot_fx: AudioStreamPlayer2D = $SFX/ShootFX
+@onready var explode_sfx: AudioStreamPlayer2D = $SFX/ExplodeSFX
+@onready var ammo_upfx: AudioStreamPlayer2D = $SFX/AmmoUPFX
+@onready var fuel_fx: AudioStreamPlayer2D = $SFX/FuelFX
+
 
 @onready var bullet = preload("res://scenes/entities/player/bullet.tscn")
 @onready var bullets: Node = $Bullets
@@ -16,7 +22,7 @@ class_name Player
 @onready var cannon_cooldown: Timer = $"Cannon Cooldown"
 
 var cooldown = false
-var cd_time = 0.5
+var cd_time = 0.25
 
 
 # Vertical speed
@@ -108,6 +114,7 @@ func _physics_process(delta: float) -> void:
 		if fueling == true:
 			fueling = false
 			animation_player.stop()
+			fuel_fx.stop()
 		var speed_factor = acceleration / max_accel
 		if fuel_cons == true:
 			var consumption = base_fuel_rate * (1.0 + speed_factor) * delta
@@ -117,6 +124,7 @@ func _physics_process(delta: float) -> void:
 		if fueling == false:
 			fueling = true
 			animation_player.play("fueling")
+			fuel_fx.play()
 		fuel_refill(refill)
 
 func tilt_animation(direction):
@@ -162,6 +170,7 @@ func explode():
 	dead = true
 	explosion.visible = true
 	explosion.play("default")
+	explode_sfx.play()
 	shadow.visible = false
 	sprite_2d.visible = false
 	fire.visible = false
@@ -173,6 +182,7 @@ func shoot():
 		var missile = bullet.instantiate()
 		missile.global_position = cannon.global_position
 		bullets.add_child(missile)
+		shoot_fx.play()
 		cannon_cooldown.start(cd_time)
 		cur_ammo -= 1
 		emit_signal("ammo_update", cur_ammo)
@@ -187,6 +197,7 @@ func ammo_refill():
 		ammo.text = "MAX AMMO"
 	else:
 		ammo.text = "+3 AMMO"
+	ammo_upfx.play()
 	animation_player.play("ammo up")
 
 func _on_cannon_cooldown_timeout() -> void:

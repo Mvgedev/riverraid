@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=4 uid="uid://dgo4ah42wbryg"]
+[gd_scene load_steps=14 format=4 uid="uid://dgo4ah42wbryg"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_y4in2"]
 [ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_qdvqy"]
 [ext_resource type="Texture2D" uid="uid://bkddm1fg3871l" path="res://assets/sprites/Levels/Textures/Water Tile 1.png" id="3_kt7gt"]
-[ext_resource type="Texture2D" uid="uid://cm7vo2krnmoul" path="res://assets/sprites/Levels/Layouts/Gate_level.png" id="4_o1t3g"]
+[ext_resource type="Texture2D" uid="uid://irfaw0k1on6m" path="res://assets/sprites/Levels/Layouts/Gate_level.png" id="4_o1t3g"]
+[ext_resource type="Texture2D" uid="uid://6hfcs6s8muge" path="res://assets/sprites/Levels/Textures/Tree.png" id="5_o1t3g"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/elements/obstacles.tscn" id="5_ug3u3"]
 [ext_resource type="PackedScene" uid="uid://rjx2rg7p4tah" path="res://scenes/levels/elements/gate.tscn" id="6_1ymj2"]
 [ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/bonus/fuel_depot.tscn" id="7_kt7gt"]
@@ -39,6 +40,36 @@ tile_set = SubResource("TileSet_8acql")
 [node name="Layout" type="Sprite2D" parent="."]
 texture = ExtResource("4_o1t3g")
 centered = false
+
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="Tree" type="Sprite2D" parent="Trees"]
+position = Vector2(-4, 28)
+texture = ExtResource("5_o1t3g")
+
+[node name="Tree7" type="Sprite2D" parent="Trees"]
+position = Vector2(272, 25)
+texture = ExtResource("5_o1t3g")
+
+[node name="Tree2" type="Sprite2D" parent="Trees"]
+position = Vector2(-4, 107)
+texture = ExtResource("5_o1t3g")
+
+[node name="Tree3" type="Sprite2D" parent="Trees"]
+position = Vector2(273, 265)
+texture = ExtResource("5_o1t3g")
+
+[node name="Tree4" type="Sprite2D" parent="Trees"]
+position = Vector2(278, 455)
+texture = ExtResource("5_o1t3g")
+
+[node name="Tree5" type="Sprite2D" parent="Trees"]
+position = Vector2(1, 424)
+texture = ExtResource("5_o1t3g")
+
+[node name="Tree6" type="Sprite2D" parent="Trees"]
+position = Vector2(-1, 558)
+texture = ExtResource("5_o1t3g")
 
 [node name="Borders" type="Node2D" parent="."]
 

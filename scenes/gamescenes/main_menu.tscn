@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://b2hwc0ivocsxw"]
+[gd_scene load_steps=35 format=4 uid="uid://b2hwc0ivocsxw"]
 
 [ext_resource type="Script" uid="uid://c6i2khd7k6lof" path="res://scripts/gamescenes/main_menu.gd" id="1_et4gm"]
 [ext_resource type="PackedScene" uid="uid://bw2d6siwdbc8o" path="res://scenes/gui/Buttons/button.tscn" id="1_nhaos"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://c4bdnqwrgotx5" path="res://assets/sprites/Entities/Player Jet/fast_fire.png" id="8_atkil"]
 [ext_resource type="Texture2D" uid="uid://d2orme3uaewhf" path="res://assets/sprites/Entities/Player Jet/neutral_fire.png" id="8_b6a2i"]
 [ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="9_qwsyo"]
+[ext_resource type="Texture2D" uid="uid://6hfcs6s8muge" path="res://assets/sprites/Levels/Textures/Tree.png" id="10_618cx"]
+[ext_resource type="AudioStream" uid="uid://bw3sn1peonant" path="res://assets/sfx/landingoff.wav" id="13_i3ljh"]
+[ext_resource type="AudioStream" uid="uid://p552gbadwyyf" path="res://assets/sfx/accel.wav" id="14_mqb8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_48civ"]
 shader = ExtResource("1_obpru")
@@ -270,6 +273,30 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(-1, 1)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("SFX/Take off:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("SFX/Accel:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_et4gm"]
 resource_name = "To_Settings"
@@ -458,6 +485,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SFX/Take off:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.1, 1.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("SFX/Accel:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_atkil"]
 _data = {
@@ -515,7 +566,191 @@ modulate = Color(1, 1, 1, 0)
 sprite_frames = SubResource("SpriteFrames_6cnxr")
 animation = &"normal"
 autoplay = "normal"
-frame_progress = 0.54515076
+frame_progress = 0.3450768
+
+[node name="Node2D" type="Node2D" parent="Menu/Environment"]
+
+[node name="Left Bank" type="Node2D" parent="Menu/Environment/Node2D"]
+
+[node name="Sprite2D7" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(65, 454)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(18, 450)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(39, 464)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(56, 484)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(19, 490)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(66, 518)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(39, 504)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Menu/Environment/Node2D/Left Bank"]
+position = Vector2(15, 530)
+texture = ExtResource("10_618cx")
+
+[node name="Midle Isle" type="Node2D" parent="Menu/Environment/Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(102, 271)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-3, 320)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-7, 258)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-2, 118)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-5, 43)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(274, 33)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(272, 133)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(273, 274)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(274, 301)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(273, 695)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-1, 663)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-2, 717)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-8, 790)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-2, 908)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(0, 964)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D21" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-9, 979)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D22" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(270, 967)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(279, 984)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D24" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(273, 1086)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D25" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(-3, 1055)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D26" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(274, 763)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D27" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(275, 810)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(279, 876)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(97, 289)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(167, 267)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(175, 298)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(160, 316)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Menu/Environment/Node2D/Midle Isle"]
+position = Vector2(109, 315)
+texture = ExtResource("10_618cx")
+
+[node name="Right Bank" type="Node2D" parent="Menu/Environment/Node2D"]
+
+[node name="Sprite2D7" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(200, 452)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(231, 456)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(209, 488)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(266, 450)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(254, 486)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(232, 514)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(202, 517)
+texture = ExtResource("10_618cx")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Menu/Environment/Node2D/Right Bank"]
+position = Vector2(267, 531)
+texture = ExtResource("10_618cx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -542,19 +777,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -39.0
-offset_top = -140.0
+offset_top = -125.0
 offset_right = 39.0
-offset_bottom = -45.0
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Story Button" parent="CanvasLayer/Control/Menu Button Container" instance=ExtResource("1_nhaos")]
-layout_mode = 2
-text = "STORY"
-
 [node name="Endless Button" parent="CanvasLayer/Control/Menu Button Container" instance=ExtResource("1_nhaos")]
 layout_mode = 2
-text = "ENDLESS"
+text = "PLAY"
 
 [node name="Settings Button" parent="CanvasLayer/Control/Menu Button Container" instance=ExtResource("1_nhaos")]
 layout_mode = 2
@@ -616,7 +847,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_atkil")
 }
 
-[connection signal="pressed" from="CanvasLayer/Control/Menu Button Container/Story Button" to="." method="_on_story_button_pressed"]
+[node name="SFX" type="Node" parent="."]
+
+[node name="Take off" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("13_i3ljh")
+bus = &"SFX"
+
+[node name="Accel" type="AudioStreamPlayer2D" parent="SFX"]
+stream = ExtResource("14_mqb8l")
+bus = &"SFX"
+
 [connection signal="pressed" from="CanvasLayer/Control/Menu Button Container/Endless Button" to="." method="_on_endless_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Menu Button Container/Settings Button" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Settings/Back Button" to="." method="_on_back_button_pressed"]

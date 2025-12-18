@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://fmlpdt63ao1w"]
+[gd_scene load_steps=17 format=3 uid="uid://fmlpdt63ao1w"]
 
 [ext_resource type="Script" uid="uid://d0dfky0fcubdi" path="res://scripts/entities/jetfighter.gd" id="1_e4skp"]
 [ext_resource type="Texture2D" uid="uid://ussy5kvji7b5" path="res://assets/sprites/Entities/Enemies/JetFighter-Sheet.png" id="2_b7i8b"]
 [ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/enemy/killzone.tscn" id="3_hqc6v"]
 [ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/effects/explosion.tscn" id="4_jwpm3"]
+[ext_resource type="AudioStream" uid="uid://cg1p116gmdyry" path="res://assets/sfx/explosion1.wav" id="5_b7i8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nw5vw"]
 atlas = ExtResource("2_b7i8b")
@@ -114,4 +115,9 @@ shape = SubResource("CapsuleShape2D_xvqkj")
 visible = false
 z_index = 6
 
+[node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_b7i8b")
+bus = &"SFX"
+
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
+[connection signal="finished" from="ExplodeSFX" to="." method="_on_explode_sfx_finished"]

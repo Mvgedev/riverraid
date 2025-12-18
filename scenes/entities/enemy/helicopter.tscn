@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://5fr14ke0vyda"]
+[gd_scene load_steps=12 format=3 uid="uid://5fr14ke0vyda"]
 
 [ext_resource type="Script" uid="uid://bh20jqpfovdo4" path="res://scripts/entities/helicopter.gd" id="1_q0k7r"]
 [ext_resource type="Texture2D" uid="uid://din67ad7y0c5d" path="res://assets/sprites/Entities/Enemies/Helicopter2-Sheet.png" id="2_ufqqk"]
 [ext_resource type="PackedScene" uid="uid://dnww4oa0hwefx" path="res://scenes/entities/enemy/killzone.tscn" id="3_5k37k"]
 [ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/effects/explosion.tscn" id="4_qp3x2"]
+[ext_resource type="AudioStream" uid="uid://cg1p116gmdyry" path="res://assets/sfx/explosion1.wav" id="5_ufqqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gqhe6"]
 atlas = ExtResource("2_ufqqk")
@@ -87,4 +88,9 @@ collide_with_bodies = false
 visible = false
 z_index = 6
 
+[node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_ufqqk")
+bus = &"SFX"
+
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]
+[connection signal="finished" from="ExplodeSFX" to="." method="_on_explode_sfx_finished"]

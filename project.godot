@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="River Raid"
-run/main_scene="uid://c4fxmbwhxhtro"
+run/main_scene="uid://b2hwc0ivocsxw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 

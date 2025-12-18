@@ -5,6 +5,7 @@ class_name Gate
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @onready var explosions: Node2D = $Explosions
+@onready var explode_sfx: AudioStreamPlayer2D = $ExplodeSFX
 
 
 signal next_level()
@@ -33,6 +34,7 @@ func explode():
 	for child in explosions.get_children():
 		child.visible = true
 		child.play("default")
+		explode_sfx.play()
 		await get_tree().create_timer(0.03).timeout
 
 func _on_explosion_finished(sprite):

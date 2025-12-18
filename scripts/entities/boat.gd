@@ -4,6 +4,7 @@ extends Enemy
 @onready var killzone: Area2D = $Killzone
 @onready var collision_shape_2d: CollisionShape2D = $Killzone/CollisionShape2D
 @onready var explosion: AnimatedSprite2D = $Explosion
+@onready var explode_sfx: AudioStreamPlayer2D = $ExplodeSFX
 
 @onready var rc_left: RayCast2D = $RCLeft
 @onready var rc_right: RayCast2D = $RCRight
@@ -26,6 +27,7 @@ func explode():
 	animated_sprite_2d.animation = "crashed"
 	explosion.visible = true
 	explosion.play("default")
+	explode_sfx.play()
 	crashed = true
 	collision_shape_2d.set_deferred("disabled", true)
 	pass

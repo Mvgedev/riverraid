@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://rjx2rg7p4tah"]
+[gd_scene load_steps=17 format=3 uid="uid://rjx2rg7p4tah"]
 
 [ext_resource type="Script" uid="uid://gl8jgfj378t7" path="res://scripts/levels/gate.gd" id="1_avsut"]
 [ext_resource type="Texture2D" uid="uid://b8gnurqowq0j3" path="res://assets/sprites/Levels/Layouts/Gate-up.png" id="1_dhssn"]
 [ext_resource type="Texture2D" uid="uid://cjct8qhkfl2vi" path="res://assets/sprites/Levels/Layouts/Gate_crashed.png" id="2_re1d3"]
 [ext_resource type="PackedScene" uid="uid://b5xthmjrmtuuw" path="res://scenes/entities/effects/explosion.tscn" id="4_xf2l6"]
+[ext_resource type="AudioStream" uid="uid://cg1p116gmdyry" path="res://assets/sfx/explosion1.wav" id="5_o1aav"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5g43"]
 atlas = ExtResource("2_re1d3")
@@ -85,18 +86,6 @@ animations = [{
 radius = 13.000002
 height = 148.0
 
-[sub_resource type="Animation" id="Animation_xf2l6"]
-resource_name = "Explosion"
-
-[sub_resource type="Animation" id="Animation_rfnou"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_lvfov"]
-_data = {
-&"Explosion": SubResource("Animation_xf2l6"),
-&"RESET": SubResource("Animation_rfnou")
-}
-
 [node name="Gate" type="Area2D"]
 script = ExtResource("1_avsut")
 
@@ -156,9 +145,8 @@ position = Vector2(202, 25)
 visible = false
 position = Vector2(68, 23)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_lvfov")
-}
+[node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_o1aav")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

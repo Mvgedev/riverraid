@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=4 uid="uid://dqnq2h0gxvnjw"]
+[gd_scene load_steps=16 format=4 uid="uid://dqnq2h0gxvnjw"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_3s8x8"]
 [ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_tg1ir"]
 [ext_resource type="Texture2D" uid="uid://bkddm1fg3871l" path="res://assets/sprites/Levels/Textures/Water Tile 1.png" id="3_kfyi8"]
 [ext_resource type="Texture2D" uid="uid://vva04c3hkb08" path="res://assets/sprites/Levels/Layouts/Layout 5.png" id="4_3s8x8"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/elements/obstacles.tscn" id="5_tg1ir"]
+[ext_resource type="Texture2D" uid="uid://6hfcs6s8muge" path="res://assets/sprites/Levels/Textures/Tree.png" id="5_yxgl3"]
 [ext_resource type="PackedScene" uid="uid://4fxy4g72ku4f" path="res://scenes/entities/enemy/boat.tscn" id="6_uvpoe"]
 [ext_resource type="PackedScene" uid="uid://5fr14ke0vyda" path="res://scenes/entities/enemy/helicopter.tscn" id="7_srv4t"]
 [ext_resource type="PackedScene" uid="uid://fmlpdt63ao1w" path="res://scenes/entities/enemy/jetfighter.tscn" id="8_6pka6"]
@@ -42,6 +43,92 @@ tile_set = SubResource("TileSet_uvpoe")
 texture = ExtResource("4_3s8x8")
 centered = false
 
+[node name="Trees" type="Node2D" parent="."]
+
+[node name="Tree" type="Sprite2D" parent="Trees"]
+position = Vector2(123, 33)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree2" type="Sprite2D" parent="Trees"]
+position = Vector2(143, 46)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree3" type="Sprite2D" parent="Trees"]
+position = Vector2(148, 289)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree4" type="Sprite2D" parent="Trees"]
+position = Vector2(123, 298)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree5" type="Sprite2D" parent="Trees"]
+position = Vector2(122, 516)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree6" type="Sprite2D" parent="Trees"]
+position = Vector2(145, 519)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree7" type="Sprite2D" parent="Trees"]
+position = Vector2(134, 539)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree8" type="Sprite2D" parent="Trees"]
+position = Vector2(-1, 417)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree9" type="Sprite2D" parent="Trees"]
+position = Vector2(-3, 511)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree10" type="Sprite2D" parent="Trees"]
+position = Vector2(-7, 523)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree11" type="Sprite2D" parent="Trees"]
+position = Vector2(273, 528)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree12" type="Sprite2D" parent="Trees"]
+position = Vector2(270, 361)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree13" type="Sprite2D" parent="Trees"]
+position = Vector2(275, 384)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree14" type="Sprite2D" parent="Trees"]
+position = Vector2(275, 254)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree15" type="Sprite2D" parent="Trees"]
+position = Vector2(-3, 197)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree16" type="Sprite2D" parent="Trees"]
+position = Vector2(-3, 114)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree17" type="Sprite2D" parent="Trees"]
+position = Vector2(-3, 137)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree18" type="Sprite2D" parent="Trees"]
+position = Vector2(-1, 48)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree19" type="Sprite2D" parent="Trees"]
+position = Vector2(276, 62)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree20" type="Sprite2D" parent="Trees"]
+position = Vector2(273, 83)
+texture = ExtResource("5_yxgl3")
+
+[node name="Tree21" type="Sprite2D" parent="Trees"]
+position = Vector2(-2, 304)
+texture = ExtResource("5_yxgl3")
+
 [node name="Borders" type="Node2D" parent="."]
 
 [node name="Left Border" parent="Borders" instance=ExtResource("5_tg1ir")]
@@ -73,7 +160,7 @@ polygon = PackedVector2Array(148, 510, 155, 512, 159, 516, 161, 523, 161, 556, 1
 [node name="EnemySpawns" type="Node2D" parent="."]
 
 [node name="Boat" parent="EnemySpawns" instance=ExtResource("6_uvpoe")]
-position = Vector2(218, 163)
+position = Vector2(221, 199)
 
 [node name="Helicopter" parent="EnemySpawns" instance=ExtResource("7_srv4t")]
 position = Vector2(216, 47)
