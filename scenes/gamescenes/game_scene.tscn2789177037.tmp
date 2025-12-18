@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xyalq5v0tsj"]
+[gd_scene load_steps=14 format=3 uid="uid://xyalq5v0tsj"]
 
 [ext_resource type="Script" uid="uid://br05u0mmt2e4r" path="res://scripts/gamescenes/game_scene.gd" id="1_v5t8o"]
 [ext_resource type="PackedScene" uid="uid://cwpwgqius8x6h" path="res://scenes/entities/player/player_jet.tscn" id="2_8w0xn"]
@@ -59,30 +59,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Player Jet:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Player Jet:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(135, 335)]
-}
 
 [sub_resource type="Animation" id="Animation_d7yel"]
 resource_name = "out_of_ammo"
@@ -100,36 +76,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_oppbp"]
-resource_name = "Game_Start"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Player Jet:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.35, 0.75, 1),
-"transitions": PackedFloat32Array(0.5, 1, 1, 1),
-"update": 0,
-"values": [Vector2(2, 2), Vector2(1.7, 1.7), Vector2(1.3, 1.3), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Player Jet:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.35, 0.75, 1),
-"transitions": PackedFloat32Array(0.5, 1.5, 1, 1),
-"update": 0,
-"values": [Vector2(135, 500), Vector2(135, 200), Vector2(135, 300), Vector2(135, 335)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5bmdg"]
 _data = {
-&"Game_Start": SubResource("Animation_oppbp"),
 &"Next Level": SubResource("Animation_5bmdg"),
 &"RESET": SubResource("Animation_hfv4q"),
 &"out_of_ammo": SubResource("Animation_d7yel")
@@ -147,7 +95,6 @@ zoom = Vector2(2, 2)
 [node name="Scroll Root" type="Node2D" parent="."]
 
 [node name="Player Jet" parent="." instance=ExtResource("2_8w0xn")]
-position = Vector2(135, 335)
 
 [node name="Level Limit" type="Node2D" parent="."]
 
@@ -238,4 +185,3 @@ libraries = {
 [connection signal="body_entered" from="Level Limit/BulletLimit" to="." method="_on_bullet_limit_body_entered"]
 [connection signal="body_entered" from="Level Limit/LeftJetExit" to="." method="_on_left_jet_exit_body_entered"]
 [connection signal="body_entered" from="Level Limit/RightJetExit" to="." method="_on_right_jet_exit_body_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

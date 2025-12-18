@@ -52,7 +52,9 @@ radius = 5.0
 height = 38.0
 
 [node name="Boat" type="Node2D"]
+z_index = 3
 script = ExtResource("1_4khof")
+score_value = 1
 metadata/_custom_type_script = "uid://b0j2k7hyrnky7"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -6,7 +6,6 @@ class_name Gate
 
 @onready var explosions: Node2D = $Explosions
 
-@export var score_value = 500
 
 signal next_level()
 
@@ -18,15 +17,16 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Bullet and crashed == false:
-		ScoreSystem.gain_score(score_value)
+		ScoreSystem.gain_score(ScoreSystem.SCORE_VAL.GATE)
 		explode()
 		sprite_2d.play("crashed")
 		crashed = true
 		body.queue_free()
 	elif body is Player and crashed == false:
-		body.hurt(4)
-		sprite_2d.play("crashed")
-		crashed = true
+		if body.intangible == false:
+			body.hurt(4)
+			sprite_2d.play("crashed")
+			crashed = true
 
 func explode():
 	emit_signal("next_level")

@@ -46,8 +46,9 @@ radius = 6.0
 height = 40.0
 
 [node name="Helicopter" type="Node2D"]
+z_index = 4
 script = ExtResource("1_q0k7r")
-score_value = 30
+score_value = 2
 metadata/_custom_type_script = "uid://b0j2k7hyrnky7"
 
 [node name="Shadow" type="Sprite2D" parent="."]
@@ -59,6 +60,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 42, 24)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 5
 sprite_frames = SubResource("SpriteFrames_j5y2l")
 autoplay = "default"
 
@@ -83,5 +85,6 @@ collide_with_bodies = false
 
 [node name="Explosion" parent="." instance=ExtResource("4_qp3x2")]
 visible = false
+z_index = 6
 
 [connection signal="animation_finished" from="Explosion" to="." method="_on_explosion_animation_finished"]

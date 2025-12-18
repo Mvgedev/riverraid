@@ -13,16 +13,15 @@ func _on_body_entered(body: Node2D) -> void:
 		collision_shape_2d.set_deferred("disabled", false)
 		explosion.visible = true
 		explosion.play("default")
-		ScoreSystem.gain_score(200)
+		ScoreSystem.gain_score(ScoreSystem.SCORE_VAL.FUEL)
 		body.queue_free()
 	elif body is Player:
-		body.on_depot = true
-		print("Should get fuel")
+		if body.intangible == false:
+			body.on_depot = true
 
 func _on_body_exited(body: Node2D) -> void:
 	if body is Player:
 		body.on_depot = false
-		print("Should stop fueling")
 
 
 func _on_explosion_animation_finished() -> void:

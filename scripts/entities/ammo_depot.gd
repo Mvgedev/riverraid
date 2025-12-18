@@ -12,11 +12,12 @@ func _on_body_entered(body: Node2D) -> void:
 		sprite_2d_2.visible = false
 		animated_sprite_2d.visible = false
 		explosion.play("default")
-		ScoreSystem.gain_score(100)
+		ScoreSystem.gain_score(ScoreSystem.SCORE_VAL.AMMO)
 		body.queue_free()
 	if body is Player:
-		body.ammo_refill()
-		queue_free()
+		if body.intangible == false:
+			body.ammo_refill()
+			queue_free()
 
 func _on_explosion_animation_finished() -> void:
 	queue_free()

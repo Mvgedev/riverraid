@@ -1,7 +1,7 @@
 extends Node2D
 class_name Enemy
 
-@export var score_value = 10
+@export var score_value : ScoreSystem.SCORE_VAL
 
 func _ready() -> void:
 	pass

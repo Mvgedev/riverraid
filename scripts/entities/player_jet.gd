@@ -39,6 +39,7 @@ var base_fuel_rate = 2
 var base_refill = 30
 var on_depot = false
 var fueling = false
+var fuel_cons = false
 
 # Ammunitions
 var max_ammo = 6
@@ -48,6 +49,7 @@ var cur_ammo = 6
 var max_health = 4
 var cur_health = 4
 var dead = false
+var intangible = false
 
 var tilting = false
 var fast = false
@@ -70,12 +72,12 @@ func _physics_process(delta: float) -> void:
 			print("No ammo")
 			emit_signal("no_ammo")
 	# Movement
-	if Input.is_action_pressed("Accelerate"):
+	if Input.is_action_pressed("Accelerate") and intangible == false:
 		acceleration = min(acceleration + accel_modifier, max_accel)
-	elif Input.is_action_pressed("Decelerate"):
+	elif Input.is_action_pressed("Decelerate") and intangible == false:
 		acceleration = max(acceleration - accel_modifier, min_accel)
 	var direction := Input.get_axis("Move Left", "Move Right")
-	if direction:
+	if direction and intangible == false:
 		if tilting == false:
 			tilt_animation(direction)
 			tilting = true
@@ -107,8 +109,9 @@ func _physics_process(delta: float) -> void:
 			fueling = false
 			animation_player.stop()
 		var speed_factor = acceleration / max_accel
-		var consumption = base_fuel_rate * (1.0 + speed_factor) * delta
-		fuel_consumption(clamp(consumption, 0.0, max_fuel))
+		if fuel_cons == true:
+			var consumption = base_fuel_rate * (1.0 + speed_factor) * delta
+			fuel_consumption(clamp(consumption, 0.0, max_fuel))
 	else:
 		var refill = base_refill * delta
 		if fueling == false:
@@ -129,6 +132,8 @@ func tilt_animation(direction):
 
 
 func fuel_consumption(value):
+	if fuel_cons == false:
+		return
 	cur_fuel = max(cur_fuel - value, 0)
 	emit_signal("fuel_update", cur_fuel)
 	if cur_fuel < 1:
@@ -162,6 +167,8 @@ func explode():
 	fire.visible = false
 
 func shoot():
+	if intangible == true:
+		return
 	if cur_ammo > 0:
 		var missile = bullet.instantiate()
 		missile.global_position = cannon.global_position

@@ -6,10 +6,26 @@ extends Node2D
 
 # UI Control
 @onready var bottom_ui: Control = $"CanvasLayer/Bottom UI"
+@onready var level_number: Label = $"CanvasLayer/Level Number"
 # Animation Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 # Player 
 @onready var player_jet: Player = $"Player Jet"
+
+func _ready() -> void:
+	level_factory.game_manager = self
+	player_jet.fuel_cons = false # No fuel consumption before first gate
+	player_jet.intangible = true
+	animation_player.play("Game_Start")
+	connect_player() # Connect player's signals to Game Scene for proper GUI update
+	ScoreSystem.connect("update_score", update_score)
+	gui_forced_update()
+	level_factory.generate_first_level(scroll_root)
+	pass
+
+func _process(delta: float) -> void:
+	for child in scroll_root.get_children():
+		child.position.y += player_jet.acceleration * delta
 
 # Scroll Management
 func _on_level_recycler_area_entered(area: Area2D) -> void:
@@ -18,6 +34,13 @@ func _on_level_recycler_area_entered(area: Area2D) -> void:
 	area.get_parent().queue_free()
 
 func _on_full_level_detection_area_entered(area: Area2D) -> void:
+	var has_gate := false
+	for child in area.get_parent().borders.get_children():
+		if child is Gate:
+			has_gate = true
+			break
+	if has_gate:
+		level_factory.call_deferred("generate_next_level", scroll_root)
 	area.get_parent().launch_jet()
 
 # Bullet Limit
@@ -31,3 +54,42 @@ func _on_left_jet_exit_body_entered(body: Node2D) -> void:
 	body.get_parent().queue_free()
 func _on_right_jet_exit_body_entered(body: Node2D) -> void:
 	body.get_parent().queue_free()
+
+
+# Signal Management
+## Player signals connection
+func connect_player():
+	player_jet.connect("fuel_update", update_fuel)
+	player_jet.connect("ammo_update", update_ammo)
+	player_jet.connect("health_update", update_health)
+	player_jet.connect("jet_explode", game_over)
+	player_jet.connect("no_ammo", out_of_ammo)
+## Update GUI
+func update_ammo(val):
+	var ammo_val = float(val) / float(player_jet.max_ammo) * 100.0
+	bottom_ui.ammo_update(ammo_val)
+func update_fuel(val):
+	bottom_ui.fuel_update(val)
+func update_health(val):
+	var health_val = float(val) / float(player_jet.max_health) * 100.0
+	bottom_ui.health_update(health_val)
+func update_score():
+	bottom_ui.score_update(ScoreSystem.cur_score)
+func gui_forced_update():
+	update_health(player_jet.cur_health)
+	update_ammo(player_jet.cur_ammo)
+	update_fuel(player_jet.cur_fuel)
+	update_score()
+## Events
+func out_of_ammo():
+	animation_player.play("out_of_ammo")
+func next_level():
+	if player_jet.fuel_cons == false:
+		player_jet.fuel_cons = true
+	level_factory.current_level += 1
+	level_number.text = "Level: " + str(level_factory.current_level)
+	animation_player.play("Next Level")
+func game_over():
+	pass
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	player_jet.intangible = false

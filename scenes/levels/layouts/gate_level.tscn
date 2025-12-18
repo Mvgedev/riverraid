@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dgo4ah42wbryg"]
+[gd_scene load_steps=13 format=4 uid="uid://dgo4ah42wbryg"]
 
 [ext_resource type="Script" uid="uid://cknvxfrutjwkb" path="res://scripts/levels/level.gd" id="1_y4in2"]
 [ext_resource type="Shader" uid="uid://bxxs5cxxppr2w" path="res://scripts/shaders/water1.gdshader" id="2_qdvqy"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cm7vo2krnmoul" path="res://assets/sprites/Levels/Layouts/Gate_level.png" id="4_o1t3g"]
 [ext_resource type="PackedScene" uid="uid://4wgx8npskkrf" path="res://scenes/levels/elements/obstacles.tscn" id="5_ug3u3"]
 [ext_resource type="PackedScene" uid="uid://rjx2rg7p4tah" path="res://scenes/levels/elements/gate.tscn" id="6_1ymj2"]
+[ext_resource type="PackedScene" uid="uid://c7vedk24djs8g" path="res://scenes/entities/bonus/fuel_depot.tscn" id="7_kt7gt"]
+[ext_resource type="PackedScene" uid="uid://brycg6dfshpwg" path="res://scenes/entities/bonus/ammo_depot.tscn" id="8_o1t3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ilh4i"]
 shader = ExtResource("2_qdvqy")
@@ -57,7 +59,19 @@ collision_mask = 130
 
 [node name="FuelSpawns" type="Node2D" parent="."]
 
+[node name="Fuel Depot" parent="FuelSpawns" instance=ExtResource("7_kt7gt")]
+position = Vector2(57, 453)
+
+[node name="Fuel Depot2" parent="FuelSpawns" instance=ExtResource("7_kt7gt")]
+position = Vector2(203, 239)
+
 [node name="SupplySpawns" type="Node2D" parent="."]
+
+[node name="Ammo Depot" parent="SupplySpawns" instance=ExtResource("8_o1t3g")]
+position = Vector2(61, 266)
+
+[node name="Ammo Depot2" parent="SupplySpawns" instance=ExtResource("8_o1t3g")]
+position = Vector2(203, 473)
 
 [node name="Reset" type="Area2D" parent="."]
 collision_layer = 16

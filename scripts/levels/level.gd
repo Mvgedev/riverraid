@@ -9,7 +9,6 @@ class_name Level
 @onready var supply_spawns: Node2D = $SupplySpawns
 
 func _ready() -> void:
-	#define_y(position.y)
 	pass
 
 func launch_jet():

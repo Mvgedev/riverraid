@@ -6,7 +6,8 @@ func _on_body_entered(body: Node2D) -> void:
 		get_parent().explode()
 		body.queue_free()
 	elif body is Player:
-		body.hurt()
-		get_parent().explode()
+		if body.intangible == false:
+			body.hurt()
+			get_parent().explode()
 	else:
 		print("What is even happening!")

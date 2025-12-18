@@ -6,5 +6,6 @@ func _on_body_entered(body: Node2D) -> void:
 		body.queue_free()
 		print("Bullet destroyed by obstacle")
 	if body is Player:
-		body.hurt(4)
+		if body.intangible == false:
+			body.hurt(4)
 	
