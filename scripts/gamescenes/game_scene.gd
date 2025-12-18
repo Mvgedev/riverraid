@@ -9,6 +9,8 @@ extends Node2D
 @onready var level_number: Label = $"CanvasLayer/Level Number"
 # Animation Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var fuel_anim: AnimationPlayer = $Fuel_warning
+@onready var ammo_warning: AnimationPlayer = $Ammo_warning
 # Sounds FX
 @onready var no_ammo: AudioStreamPlayer2D = $SFX/no_ammo
 
@@ -67,6 +69,7 @@ func connect_player():
 	player_jet.connect("health_update", update_health)
 	player_jet.connect("jet_explode", game_over)
 	player_jet.connect("no_ammo", out_of_ammo)
+	player_jet.connect("fuel_warning", fuel_warning)
 ## Update GUI
 func update_ammo(val):
 	var ammo_val = float(val) / float(player_jet.max_ammo) * 100.0
@@ -84,8 +87,14 @@ func gui_forced_update():
 	update_fuel(player_jet.cur_fuel)
 	update_score()
 ## Events
+func fuel_warning(val):
+	if val:
+		fuel_anim.play("low_fuel")
+	else:
+		fuel_anim.stop()
+	pass
 func out_of_ammo():
-	animation_player.play("out_of_ammo")
+	ammo_warning.play("out_of_ammo")
 	no_ammo.play()
 func next_level():
 	if player_jet.fuel_cons == false:
@@ -96,4 +105,5 @@ func next_level():
 func game_over():
 	pass
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	player_jet.intangible = false
+	if anim_name == "Game_Start":
+		player_jet.intangible = false

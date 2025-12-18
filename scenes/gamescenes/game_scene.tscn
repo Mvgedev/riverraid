@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://xyalq5v0tsj"]
+[gd_scene load_steps=18 format=3 uid="uid://xyalq5v0tsj"]
 
 [ext_resource type="Script" uid="uid://br05u0mmt2e4r" path="res://scripts/gamescenes/game_scene.gd" id="1_v5t8o"]
 [ext_resource type="PackedScene" uid="uid://cwpwgqius8x6h" path="res://scenes/entities/player/player_jet.tscn" id="2_8w0xn"]
@@ -18,22 +18,6 @@ b = Vector2(273, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_73je6"]
 b = Vector2(0, 484)
-
-[sub_resource type="Animation" id="Animation_5bmdg"]
-resource_name = "Next Level"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Level Number:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333, 1, 1.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_hfv4q"]
 length = 0.001
@@ -85,6 +69,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(135, 335)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Low Fuel Warning:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_d7yel"]
 resource_name = "out_of_ammo"
@@ -100,6 +96,38 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cfrlv"]
+resource_name = "low_fuel"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Low Fuel Warning:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5bmdg"]
+resource_name = "Next Level"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Level Number:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 1, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_oppbp"]
@@ -148,6 +176,7 @@ _data = {
 &"Game_Start": SubResource("Animation_oppbp"),
 &"Next Level": SubResource("Animation_5bmdg"),
 &"RESET": SubResource("Animation_hfv4q"),
+&"low_fuel": SubResource("Animation_cfrlv"),
 &"out_of_ammo": SubResource("Animation_d7yel")
 }
 
@@ -217,14 +246,37 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -48.0
-offset_right = 266.0
+offset_right = 270.0
 offset_bottom = -22.0
 grow_vertical = 2
 scale = Vector2(2, 2)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.60784316)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
 theme_override_fonts/font = ExtResource("3_8w0xn")
 theme_override_font_sizes/font_size = 32
 text = "<!> OUT OF AMMO <!>"
+
+[node name="Low Fuel Warning" type="Label" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -180.0
+offset_right = 270.0
+offset_bottom = -154.0
+grow_vertical = 2
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 0.83137256, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.60784316)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("3_8w0xn")
+theme_override_font_sizes/font_size = 32
+text = "/!\\ LOW FUEL /!\\"
+horizontal_alignment = 1
 
 [node name="Level Number" type="Label" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0)
@@ -245,6 +297,16 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5bmdg")
+}
+
+[node name="Fuel_warning" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5bmdg")
+}
+
+[node name="Ammo_warning" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_5bmdg")
 }

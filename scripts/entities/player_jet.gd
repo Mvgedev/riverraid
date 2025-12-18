@@ -46,6 +46,7 @@ var base_refill = 30
 var on_depot = false
 var fueling = false
 var fuel_cons = false
+var low_fuel = false
 
 # Ammunitions
 var max_ammo = 6
@@ -61,6 +62,7 @@ var tilting = false
 var fast = false
 
 signal fuel_update(val)
+signal fuel_warning(val)
 signal health_update(val)
 signal jet_explode()
 signal ammo_update(val)
@@ -144,6 +146,9 @@ func fuel_consumption(value):
 		return
 	cur_fuel = max(cur_fuel - value, 0)
 	emit_signal("fuel_update", cur_fuel)
+	if cur_fuel <= 25 and low_fuel == false:
+		low_fuel = true
+		emit_signal("fuel_warning", low_fuel)
 	if cur_fuel < 1:
 		emit_signal("jet_explode")
 		explode()
@@ -152,6 +157,9 @@ func fuel_consumption(value):
 func fuel_refill(value):
 	cur_fuel = min(cur_fuel + value, max_fuel)
 	emit_signal("fuel_update", cur_fuel)
+	if low_fuel == true and cur_fuel > 15:
+		low_fuel = false
+		emit_signal("fuel_warning", low_fuel)
 
 func hurt(value := 1):
 	cur_health -= value

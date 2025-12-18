@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://b2hwc0ivocsxw"]
+[gd_scene load_steps=36 format=4 uid="uid://b2hwc0ivocsxw"]
 
 [ext_resource type="Script" uid="uid://c6i2khd7k6lof" path="res://scripts/gamescenes/main_menu.gd" id="1_et4gm"]
 [ext_resource type="PackedScene" uid="uid://bw2d6siwdbc8o" path="res://scenes/gui/Buttons/button.tscn" id="1_nhaos"]
@@ -14,6 +14,7 @@
 [ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="9_qwsyo"]
 [ext_resource type="Texture2D" uid="uid://6hfcs6s8muge" path="res://assets/sprites/Levels/Textures/Tree.png" id="10_618cx"]
 [ext_resource type="AudioStream" uid="uid://bw3sn1peonant" path="res://assets/sfx/landingoff.wav" id="13_i3ljh"]
+[ext_resource type="PackedScene" uid="uid://48l223uv3v3v" path="res://scenes/gui/game_over.tscn" id="14_6cnxr"]
 [ext_resource type="AudioStream" uid="uid://p552gbadwyyf" path="res://assets/sfx/accel.wav" id="14_mqb8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_48civ"]
@@ -566,7 +567,6 @@ modulate = Color(1, 1, 1, 0)
 sprite_frames = SubResource("SpriteFrames_6cnxr")
 animation = &"normal"
 autoplay = "normal"
-frame_progress = 0.3450768
 
 [node name="Node2D" type="Node2D" parent="Menu/Environment"]
 
@@ -841,6 +841,9 @@ layout_mode = 2
 [node name="Back Button" parent="CanvasLayer/Control/Settings" instance=ExtResource("1_nhaos")]
 layout_mode = 2
 text = "BACK"
+
+[node name="Game Over" parent="CanvasLayer" instance=ExtResource("14_6cnxr")]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

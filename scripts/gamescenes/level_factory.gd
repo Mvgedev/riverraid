@@ -30,7 +30,7 @@ const max_ammo = 7 # 3 Ammo Spawns per Layout
 func generate_next_level(handler):
 	# Proper max elements and size
 	var l_size = level_size + current_level
-	var m_enemy = max_enemy + current_level
+	var m_enemy = max_enemy + (current_level * 2)
 	var m_fuel = max(current_level, max_fuel - current_level)
 	var m_ammo = max(current_level, max_ammo - current_level)
 	# Slots for each layout
@@ -104,6 +104,7 @@ func distribute(total: int, parts: int, cap: int, min_part := 0) -> Array:
 	return result
 
 func clean_spawns(to_clean, quota):
+	to_clean.shuffle()
 	for i in to_clean.size():
 		if i < quota:
 			continue
