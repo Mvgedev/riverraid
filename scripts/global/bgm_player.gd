@@ -32,7 +32,7 @@ func play_bgm(song):
 		print("Failed to play: " + str(song))
 
 func volume_from_percent(p: float) -> float:
-	return lerp(-40.0, 0.0, clamp(p, 0.0, 1.0)) # Check value
+	return lerp(-50.0, 0.0, clamp(p, 0.0, 1.0)) # Check value
 
 func update_sfx_vol(val):
 	sfx_volume = val

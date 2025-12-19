@@ -9,7 +9,7 @@ extends Area2D
 var exploding = false
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is Bullet:
+	if body is Bullet and exploding == false:
 		exploding = true
 		sprite_2d.visible = false
 		sprite_2d_2.visible = false
