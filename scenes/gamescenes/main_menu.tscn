@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://b2hwc0ivocsxw"]
+[gd_scene load_steps=35 format=4 uid="uid://b2hwc0ivocsxw"]
 
 [ext_resource type="Script" uid="uid://c6i2khd7k6lof" path="res://scripts/gamescenes/main_menu.gd" id="1_et4gm"]
 [ext_resource type="PackedScene" uid="uid://bw2d6siwdbc8o" path="res://scenes/gui/Buttons/button.tscn" id="1_nhaos"]
@@ -14,7 +14,6 @@
 [ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="9_qwsyo"]
 [ext_resource type="Texture2D" uid="uid://6hfcs6s8muge" path="res://assets/sprites/Levels/Textures/Tree.png" id="10_618cx"]
 [ext_resource type="AudioStream" uid="uid://bw3sn1peonant" path="res://assets/sfx/landingoff.wav" id="13_i3ljh"]
-[ext_resource type="PackedScene" uid="uid://48l223uv3v3v" path="res://scenes/gui/game_over.tscn" id="14_6cnxr"]
 [ext_resource type="AudioStream" uid="uid://p552gbadwyyf" path="res://assets/sfx/accel.wav" id="14_mqb8l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_48civ"]
@@ -299,82 +298,6 @@ tracks/14/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_et4gm"]
-resource_name = "To_Settings"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/Control/Menu Button Container:mouse_filter")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/Control/Menu Button Container:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Settings:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.16666667, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 497), Vector2(0, -110)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Menu:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.16666667, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -110), Vector2(0, -717)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/Control/Settings:mouse_filter")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [2, 1]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CanvasLayer/Control/Settings:modulate")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.5, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_atkil"]
 resource_name = "To_Game_Screen"
 length = 2.5
@@ -509,6 +432,82 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_et4gm"]
+resource_name = "To_Settings"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/Menu Button Container:mouse_filter")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/Menu Button Container:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Settings:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 497), Vector2(0, -110)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Menu:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666667, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -110), Vector2(0, -717)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/Control/Settings:mouse_filter")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Control/Settings:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_atkil"]
@@ -818,9 +817,11 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_qwsyo")
 text = "Music"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/Settings/Music"]
+[node name="BGM Slider" type="HSlider" parent="CanvasLayer/Control/Settings/Music"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+max_value = 1.0
+step = 0.1
 rounded = true
 scrollable = false
 
@@ -834,16 +835,15 @@ theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("9_qwsyo")
 text = "Sound"
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/Control/Settings/SFX"]
+[node name="SFX Slider" type="HSlider" parent="CanvasLayer/Control/Settings/SFX"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
+max_value = 1.0
+step = 0.1
 
 [node name="Back Button" parent="CanvasLayer/Control/Settings" instance=ExtResource("1_nhaos")]
 layout_mode = 2
 text = "BACK"
-
-[node name="Game Over" parent="CanvasLayer" instance=ExtResource("14_6cnxr")]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -862,5 +862,7 @@ bus = &"SFX"
 
 [connection signal="pressed" from="CanvasLayer/Control/Menu Button Container/Endless Button" to="." method="_on_endless_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Control/Menu Button Container/Settings Button" to="." method="_on_settings_button_pressed"]
+[connection signal="drag_ended" from="CanvasLayer/Control/Settings/Music/BGM Slider" to="." method="_on_bgm_slider_drag_ended"]
+[connection signal="drag_ended" from="CanvasLayer/Control/Settings/SFX/SFX Slider" to="." method="_on_sfx_slider_drag_ended"]
 [connection signal="pressed" from="CanvasLayer/Control/Settings/Back Button" to="." method="_on_back_button_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

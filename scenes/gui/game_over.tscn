@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://48l223uv3v3v"]
+[gd_scene load_steps=5 format=3 uid="uid://48l223uv3v3v"]
 
 [ext_resource type="Texture2D" uid="uid://dvu6e1u1jjhmm" path="res://assets/sprites/UI/Window Block.png" id="1_a3qhw"]
+[ext_resource type="Script" uid="uid://j7v6k0lqn2ut" path="res://scripts/gui/game_over.gd" id="1_b0sm8"]
+[ext_resource type="FontFile" uid="uid://b84u21ff4j81v" path="res://assets/font/PixelSerif_16px_v02.ttf" id="2_48u5y"]
+[ext_resource type="PackedScene" uid="uid://bw2d6siwdbc8o" path="res://scenes/gui/Buttons/button.tscn" id="3_heypm"]
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
@@ -9,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_b0sm8")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -26,3 +30,76 @@ grow_vertical = 2
 scale = Vector2(2, 2)
 pivot_offset = Vector2(79, 98)
 texture = ExtResource("1_a3qhw")
+
+[node name="Control" type="Control" parent="TextureRect"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 8.0
+offset_right = -6.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 6.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Game Over" type="Label" parent="TextureRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_48u5y")
+text = "Game over"
+horizontal_alignment = 1
+
+[node name="Reason" type="Label" parent="TextureRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.60784316)
+theme_override_fonts/font = ExtResource("2_48u5y")
+text = "You ran out of fuel"
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="TextureRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_48u5y")
+text = "Your score is:"
+horizontal_alignment = 1
+
+[node name="Score_Val" type="Label" parent="TextureRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_48u5y")
+text = "10123948"
+horizontal_alignment = 1
+
+[node name="High Score" type="Label" parent="TextureRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_48u5y")
+text = "Your best score is:"
+horizontal_alignment = 1
+
+[node name="HS_Val" type="Label" parent="TextureRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_48u5y")
+text = "120391458"
+horizontal_alignment = 1
+
+[node name="Play Again" parent="TextureRect/Control/VBoxContainer" instance=ExtResource("3_heypm")]
+layout_mode = 2
+text = "PLAY AGAIN"
+
+[node name="Back To Menu" parent="TextureRect/Control/VBoxContainer" instance=ExtResource("3_heypm")]
+layout_mode = 2
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="TextureRect/Control/VBoxContainer/Play Again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="TextureRect/Control/VBoxContainer/Back To Menu" to="." method="_on_back_to_menu_pressed"]

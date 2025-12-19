@@ -7,6 +7,7 @@ extends Node2D
 # UI Control
 @onready var bottom_ui: Control = $"CanvasLayer/Bottom UI"
 @onready var level_number: Label = $"CanvasLayer/Level Number"
+@onready var game_over_ui: Control = $"CanvasLayer/Game Over"
 # Animation Player
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var fuel_anim: AnimationPlayer = $Fuel_warning
@@ -24,6 +25,7 @@ func _ready() -> void:
 	animation_player.play("Game_Start")
 	connect_player() # Connect player's signals to Game Scene for proper GUI update
 	ScoreSystem.connect("update_score", update_score)
+	ScoreSystem.new_game()
 	gui_forced_update()
 	level_factory.generate_first_level(scroll_root)
 	pass
@@ -103,7 +105,15 @@ func next_level():
 	level_number.text = "Level: " + str(level_factory.current_level)
 	animation_player.play("Next Level")
 func game_over():
-	pass
+	ScoreSystem.game_over()
+	player_jet.fuel_cons = false
+	player_jet.intangible = true
+	var reason = GameOverUI.CRASH_REASON.CRASH
+	if player_jet.cur_fuel < 1:
+		reason = GameOverUI.CRASH_REASON.FUEL
+	game_over_ui.set_reason(reason)
+	game_over_ui.update_score()
+	animation_player.play("Game_Over")
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Game_Start":
 		player_jet.intangible = false

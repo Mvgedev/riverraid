@@ -19,3 +19,11 @@ func load_score():
 func gain_score(val):
 	cur_score += SCORE_AMOUNT[val]
 	emit_signal("update_score")
+
+func game_over():
+	if high_score < cur_score:
+		high_score = cur_score
+	save_score()
+
+func new_game():
+	cur_score = 0

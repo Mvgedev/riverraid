@@ -1,8 +1,16 @@
 extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+#Settings Sliders
+@onready var bgm_slider: HSlider = $"CanvasLayer/Control/Settings/Music/BGM Slider"
+@onready var sfx_slider: HSlider = $"CanvasLayer/Control/Settings/SFX/SFX Slider"
 
 const GAME_SCENE := preload("res://scenes/gamescenes/game_scene.tscn")
+
+func _ready() -> void:
+	bgm_slider.value = BgmPlayer.bgm_volume
+	sfx_slider.value = BgmPlayer.sfx_volume
+	pass
 
 func _on_settings_button_pressed() -> void:
 	animation_player.play("To_Settings")
@@ -19,3 +27,11 @@ func _on_back_button_pressed() -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "To_Game_Screen":
 		get_tree().change_scene_to_packed(GAME_SCENE)
+
+func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		BgmPlayer.update_sfx_vol(sfx_slider.value)
+
+func _on_bgm_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		BgmPlayer.update_bgm_vol(bgm_slider.value)
