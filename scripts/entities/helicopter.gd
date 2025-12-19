@@ -9,7 +9,7 @@ extends Enemy
 @onready var rc_left: RayCast2D = $RCLeft
 @onready var rc_right: RayCast2D = $RCRight
 
-var direction = 1
+var direction = -1
 var helicopter_speed = 75
 var crash = false
 

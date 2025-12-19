@@ -19,6 +19,7 @@ extends Node2D
 @onready var player_jet: Player = $"Player Jet"
 
 func _ready() -> void:
+	BgmPlayer.play_bgm(BgmPlayer.GAME_THEME)
 	level_factory.game_manager = self
 	player_jet.fuel_cons = false # No fuel consumption before first gate
 	player_jet.intangible = true
@@ -106,6 +107,7 @@ func next_level():
 	animation_player.play("Next Level")
 func game_over():
 	ScoreSystem.game_over()
+	SaveSystem.save_savefile()
 	player_jet.fuel_cons = false
 	player_jet.intangible = true
 	var reason = GameOverUI.CRASH_REASON.CRASH

@@ -6,3 +6,4 @@
 script = ExtResource("1_kemgg")
 
 [node name="Stream" type="AudioStreamPlayer2D" parent="."]
+bus = &"BGM"

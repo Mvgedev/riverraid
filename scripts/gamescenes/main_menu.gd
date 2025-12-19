@@ -11,6 +11,7 @@ const GAME_SCENE := preload("res://scenes/gamescenes/game_scene.tscn")
 
 
 func _ready() -> void:
+	BgmPlayer.play_bgm(BgmPlayer.MENUTHEME)
 	bgm_slider.value = BgmPlayer.bgm_volume
 	sfx_slider.value = BgmPlayer.sfx_volume
 	pass
@@ -48,7 +49,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_sfx_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
 		BgmPlayer.update_sfx_vol(sfx_slider.value)
+		SaveSystem.save_savefile()
 
 func _on_bgm_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
 		BgmPlayer.update_bgm_vol(bgm_slider.value)
+		SaveSystem.save_savefile()

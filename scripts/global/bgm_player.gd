@@ -1,6 +1,8 @@
 extends Node
 
 @onready var stream: AudioStreamPlayer2D = $Stream
+const MENUTHEME = preload("res://assets/bgm/briefing.ogg")
+const GAME_THEME = preload("res://assets/bgm/system_daemon.ogg")
 
 var sfx_volume = 1.0
 var bgm_volume = 1.0
@@ -14,7 +16,14 @@ func _ready() -> void:
 	set_volume(BGM_BUS, bgm_volume)
 
 func load_volume():
-	pass
+	if SaveSystem.save_data and SaveSystem.save_data.has("sfx_vol"):
+		bgm_volume = SaveSystem.save_data["bgm_vol"]
+		sfx_volume = SaveSystem.save_data["sfx_vol"]
+	else:
+		var b_sfx = AudioServer.get_bus_index(SFX_BUS)
+		sfx_volume = percent_from_volume(AudioServer.get_bus_volume_db(b_sfx))
+		var b_bgm = AudioServer.get_bus_index(BGM_BUS)
+		bgm_volume = percent_from_volume(AudioServer.get_bus_volume_db(b_bgm))
 
 func save_volume():
 	pass
@@ -32,7 +41,10 @@ func play_bgm(song):
 		print("Failed to play: " + str(song))
 
 func volume_from_percent(p: float) -> float:
-	return lerp(-50.0, 0.0, clamp(p, 0.0, 1.0)) # Check value
+	return lerp(-60.0, 0.0, clamp(p, 0.0, 1.0)) # Check value
+
+func percent_from_volume(db: float) -> float:
+	return inverse_lerp(-60.0, 0.0, clamp(db, -60.0, 0.0))
 
 func update_sfx_vol(val):
 	sfx_volume = val

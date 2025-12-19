@@ -10,9 +10,12 @@ config_version=5
 
 [application]
 
-config/name="River Raid"
+config/name="River Strike"
 run/main_scene="uid://b2hwc0ivocsxw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
+boot_splash/bg_color=Color(0.14901961, 0.16862746, 0.26666668, 1)
+boot_splash/use_filter=false
+boot_splash/image="uid://duno1tmdpi578"
 config/icon="res://icon.svg"
 
 [autoload]

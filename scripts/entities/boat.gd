@@ -10,7 +10,7 @@ extends Enemy
 @onready var rc_right: RayCast2D = $RCRight
 
 @export var boat_speed = 30
-var direction = 1
+var direction = -1
 var crashed = false
 
 func _process(delta: float) -> void:
